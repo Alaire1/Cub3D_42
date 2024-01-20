@@ -1,0 +1,10 @@
+.vscode/
+*.dSYM/
+.DS_Store
+objs/
+*.o
+*.out
+*.a
+*.exe
+cub3d
+cub3d_bonus
