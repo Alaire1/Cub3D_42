@@ -6,7 +6,7 @@
 /*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 11:43:14 by hel-makh          #+#    #+#             */
-/*   Updated: 2024/01/20 16:21:22 by akaraban         ###   ########.fr       */
+/*   Updated: 2024/01/21 18:44:03 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,7 +179,7 @@ typedef struct s_vars {
 
 /**************************[ Utils ]**************************/
 long	ft_get_current_time(void);
-int		ft_create_trgb(int t, int r, int g, int b);
+int		trgb_to_int(int t, int red, int green, int blue);
 double	ft_get_distance(t_coor poin1, t_coor point2);
 int		ft_is_in_circle(double x, double y, t_circle circle);
 double	ft_rtod(double radian);
@@ -192,7 +192,6 @@ void	print_error(char *error); //my function // needs to be taken to different f
 int		ft_import_map(t_vars *vars, char *file);
 int		ft_parse_textures(t_vars *vars, int fd);
 int		ft_get_textures(t_vars *vars, char **info);
-int		ft_parse_map(t_map *map, int fd);
 int		ft_component_surroundings(char **map, int i, int j);
 int		check_map_size(t_vars *info, int fd); //my function
 int		copy_map_to_info(t_vars *info, char *file); //my function

@@ -8,7 +8,7 @@ static int check_player(char c, t_map *map)
 		map->player_count++;
 		if (map->player_count > 1)
 		{
-			print_error("Too many players.\n");
+			print_error("Too many players.");
 			return (1);
 		}
 	}
@@ -30,7 +30,7 @@ static int map_valid_content(char *line, t_map *map)
 		 && line[i] != 'S' && line[i] != 'W' 
 		 && line[i] != 'E' && line[i] != ' ')
 		{
-			print_error("Invalid map content.\n");
+			print_error("Invalid map content.");
 			return (0);
 		}
 		i++;
@@ -70,18 +70,13 @@ static int get_map_size(t_map *map, int fd)
 {
 	char	*line;
 	int		i;
-	int null_flag;
 
 	i = 0;
-	null_flag = 0;
-	while (!null_flag) // while loop condition may need to be changed since it's basically like while (1)
+	while (1)
 	{
 		line = get_next_line(fd);
-		if (!line) //that first so if there's no line it will break
-		{
-			null_flag = 1;
+		if (!line) 
 			break;
-		}
 		else if (empty_line(line))
 		{
 			map->start_map_index++;
@@ -90,13 +85,13 @@ static int get_map_size(t_map *map, int fd)
 		}
 		if (*line)
 		{
-			if (map_valid_content(line, map) == 0) //changed to not copy map, if there are invalid chars
-				return (0);
-			// map_has_started = 1;
+			if (map_valid_content(line, map) == 0) 
+				return (free(line), 0);
 			map->height++;
 			if ((size_t)map->width < ft_strlen(line))
 				map->width = ft_strlen(line);
 		}
+		free(line);
 		i++;
 	}
 	return (1);
@@ -108,7 +103,7 @@ int check_map_size(t_vars *info, int fd)
         return (0);
     if (!info->map.width || !info->map.height)
     {
-        print_error("Invalid map size.\n");
+        print_error("Invalid map size.");
         return(0);
     }
     return(1);

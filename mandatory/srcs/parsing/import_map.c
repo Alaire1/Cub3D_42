@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_import_map.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/05 14:03:39 by hel-makh          #+#    #+#             */
-/*   Updated: 2024/01/20 16:25:54 by akaraban         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../includes/cub3d.h"
 
 static void ft_free_array(char **arr)
@@ -269,11 +257,11 @@ int	ft_import_map(t_vars *vars, char *file)
 		close(fd);
 		return (0);
 	}
-	// if (!ft_parse_textures(vars, fd) || !ft_parse_map(&vars->map, fd))
-	// 	return (0);
 	close(fd);
 	if (!copy_map_to_info(vars, file))
-        return (0);
+	{
+		return (0);
+	}
 	if (check_walls(vars) == 0)	
 		return (0);
 	ft_get_player_position(vars);

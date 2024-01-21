@@ -6,81 +6,38 @@
 #    By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/05 11:42:59 by hel-makh          #+#    #+#              #
-#    Updated: 2024/01/20 16:27:16 by akaraban         ###   ########.fr        #
+#    Updated: 2024/01/21 18:35:51 by akaraban         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 HEADER			=	mandatory/includes/cub3d.h
 
-HEADER_BONUS	=	bonus/includes/cub3d.h
-
 NAME			=	cub3d
 
-NAME_BONUS		=	cub3d_bonus
-
 FILES			=	utils/ft_get_current_time.c\
-					utils/ft_create_trgb.c\
 					utils/ft_get_distance.c\
 					utils/ft_is_in_circle.c\
 					utils/ft_radian_degree.c\
+					utils/ft_exit_game.c\
 					utils/ft_radian_operations.c\
 					parsing/check_input_validity.c \
-					parsing/ft_parse_map.c\
 					parsing/copy_map_info.c\
-					parsing/ft_import_map.c\
-					parsing/ft_parse_textures.c\
-					parsing/ft_get_textures.c\
 					parsing/parse_map.c\
-					parsing/ft_component_surroundings.c\
-					movements/ft_get_player_position.c\
-					movements/ft_player_movement.c\
+					parsing/import_map.c \
+					player/ft_get_player_position.c\
+					player/ft_player_movement.c\
 					rendering/ft_get_hit_wall.c\
 					rendering/ft_frame_rendering.c\
 					rendering/ft_draw_rays.c\
 					rendering/ft_render_3d_scene.c\
-					rendering/ft_draw_floor_ceilling.c\
-					other/ft_exit_game.c\
-					main.c
-
-FILES_BONUS		=	utils/ft_get_current_time.c\
-					utils/ft_create_trgb.c\
-					utils/ft_get_distance.c\
-					utils/ft_is_in_circle.c\
-					utils/ft_radian_degree.c\
-					utils/ft_radian_operations.c\
-					utils/ft_play_sound.c\
-					utils/ft_collectible_lstfuncs.c\
-					utils/ft_door_lstfuncs.c\
-					utils/ft_render_lstfuncs.c\
-					parsing/ft_import_map.c\
-					parsing/ft_parse_textures.c\
-					parsing/ft_get_textures.c\
-					parsing/ft_parse_map.c\
-					parsing/ft_component_surroundings.c\
-					movements/ft_get_player_position.c\
-					movements/ft_player_movement.c\
-					rendering/ft_get_hit_wall.c\
-					rendering/ft_frame_rendering.c\
-					rendering/ft_door_opening.c\
-					rendering/ft_render_minimap.c\
-					rendering/ft_draw_rays.c\
-					rendering/ft_render_3d_scene.c\
-					rendering/ft_render_sprites.c\
-					rendering/ft_draw_floor_ceilling.c\
-					other/ft_exit_game.c\
+					rendering/ft_draw_floor_ceilling.c \
 					main.c
 
 SRCS_DIR		=	mandatory/srcs/
 SRCS			=	$(addprefix $(SRCS_DIR), $(FILES))
 
-SRCS_BONUS_DIR	=	bonus/srcs/
-SRCS_BONUS		=	$(addprefix $(SRCS_BONUS_DIR), $(FILES_BONUS))
-
 OBJS_DIR		=	mandatory/objs/
 OBJS			=	$(patsubst %.c, %.o, $(addprefix $(OBJS_DIR), $(FILES)))
-
-OBJS_BONUS_DIR	=	bonus/objs/
-OBJS_BONUS		=	$(patsubst %.c, %.o, $(addprefix $(OBJS_BONUS_DIR), $(FILES_BONUS)))
 
 CC				=	cc
 CFLAGS			=	-Wall -Wextra -Werror
@@ -107,19 +64,11 @@ $(OBJS_DIR)%.o:$(SRCS_DIR)%.c				$(HEADER)
 	@mkdir -p $(shell dirname $@)
 	@$(CC) $(CFLAGS) $(LIBFT_IFLAGS) $(MLX_IFLAGS) -c $< -o $@
 
-$(OBJS_BONUS_DIR)%.o:$(SRCS_BONUS_DIR)%.c	$(HEADER_BONUS)
-	@mkdir -p $(shell dirname $@)
-	@$(CC) $(CFLAGS) $(LIBFT_IFLAGS) $(MLX_IFLAGS) -c $< -o $@
-
 $(NAME):	$(HEADER) $(OBJS) $(LIBFT) $(MLX)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) $(MLX_LFLAGS) -o $(NAME)
 
-$(NAME_BONUS):	$(HEADER_BONUS) $(OBJS_BONUS) $(LIBFT) $(MLX)
-	@$(CC) $(CFLAGS) $(OBJS_BONUS) $(LIBFT) $(MLX) $(MLX_LFLAGS) -o $(NAME_BONUS)
-
 all:	$(NAME)
 
-bonus:	$(NAME_BONUS)
 
 $(LIBFT):
 	@make -C $(LIBFT_DIR)

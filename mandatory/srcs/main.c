@@ -6,7 +6,7 @@
 /*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 11:49:49 by hel-makh          #+#    #+#             */
-/*   Updated: 2024/01/20 15:27:13 by akaraban         ###   ########.fr       */
+/*   Updated: 2024/01/21 20:04:24 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,18 @@ static void init_mlx(t_mlx *mlx) // ours
 		print_error("mlx_init() failed");
 }
 
+static void init_player(t_player *player) // ours
+{
+	player->move.x = 0;
+	player->move.y = 0;
+	player->rotate = 0;
+}
+
 static void init_main_struct(t_vars *info) // ours
 {
 	init_map(&info->map);
 	init_mlx(&info->mlx);
+	init_player(&info->player);
 
 }
 static void	ft_start_game(t_vars *vars)
@@ -58,9 +66,6 @@ static void	ft_start_game(t_vars *vars)
 		printf("Error\nCouldn't open window.\n");
 		ft_exit_game(vars, EXIT_FAILURE);
 	}
-	vars->player.move.x = 0;
-	vars->player.move.y = 0;
-	vars->player.rotate = 0;
 	mlx_hook(vars->mlx.win, 02, (1L << 0), key_press, vars);
 	mlx_hook(vars->mlx.win, 03, (1L << 1), key_release, vars);
 	mlx_hook(vars->mlx.win, 17, 0L, exit_game, vars);

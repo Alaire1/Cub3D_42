@@ -1,17 +1,17 @@
 
 #include "../../includes/cub3d.h"
 
-static void  print_map(char **map)
-{
-	int i;
+// static void  print_map(char **map)
+// {
+// 	int i;
 
-	i = 0;
-	while (map[i])
-	{
-		printf("%s\n", map[i]);
-		i++;
-	}
-}
+// 	i = 0;
+// 	while (map[i])
+// 	{
+// 		printf("%s\n", map[i]);
+// 		i++;
+// 	}
+// }
 
 static void open_file(char *file, int *fd) //may be changed
 {
@@ -62,11 +62,13 @@ static void fill_map(t_vars *info, int fd)
 static void copy_map(t_vars *info, char *file)
 {
     int fd;
+	if (info->map.player_count != 1)
+		return (print_error("Invalid number of players.\n"));
     open_file(file, &fd);
     skip_lines(fd, info->map.start_map_index);
     allocate_map(info);
     fill_map(info, fd);
-    print_map(info->map.map); //test function
+    // print_map(info->map.map); //test function
     close(fd);
 }
 

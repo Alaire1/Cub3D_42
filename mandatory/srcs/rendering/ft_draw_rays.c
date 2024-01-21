@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_draw_rays.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybensell <ybensell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 11:06:14 by hel-makh          #+#    #+#             */
-/*   Updated: 2022/08/25 10:50:02 by ybensell         ###   ########.fr       */
+/*   Updated: 2024/01/21 18:38:05 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	ft_draw_line(t_vars *vars, t_coor dest, t_circle minimap)
 	{
 		vars->mlx.img.data
 		[(int)round(coor.y) * WIDTH + (int)round(coor.x)]
-			= ft_create_trgb(0, 0, 255, 0);
+			= trgb_to_int(0, 0, 255, 0);
 		coor.x += inc.x;
 		coor.y += inc.y;
 		steps --;

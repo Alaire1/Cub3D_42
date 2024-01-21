@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_render_3d_scene.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybensell <ybensell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 11:04:10 by hel-makh          #+#    #+#             */
-/*   Updated: 2022/08/25 10:50:09 by ybensell         ###   ########.fr       */
+/*   Updated: 2024/01/21 18:38:23 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	ft_draw_pixel(t_vars *vars, t_render *render, int *data, int ty)
 	else
 		img = &vars->map.east;
 	color = ft_get_texture_pixel(*img, render, ty);
-	if (color != ft_create_trgb(255, 0, 0, 0))
+	if (color != trgb_to_int(255, 0, 0, 0))
 		*data = color;
 }
 
