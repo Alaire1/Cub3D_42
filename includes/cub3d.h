@@ -20,7 +20,7 @@
 # include <math.h>
 # include <errno.h>
 # include <sys/time.h>
-# include "../libft/libft.h"
+# include "../Libft/libft.h"
 # include "../mlx/mlx.h"
 
 # define USAGE			"Usage: ./cub3d <file.cub>"
