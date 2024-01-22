@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_hit_wall.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybensell <ybensell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/11 10:27:22 by ybensell          #+#    #+#             */
-/*   Updated: 2022/08/11 10:39:35 by ybensell         ###   ########.fr       */
+/*   Created: 2024/01/22 12:41:24 by narigi-e          #+#    #+#             */
+/*   Updated: 2024/01/22 12:42:32 by narigi-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,9 @@ t_coor	ft_get_hit_wall(t_vars *vars, t_coor start_pos,
 
 	x_wall = get_intersect_pt(vars, start_pos, angle, &ft_intersec_x);
 	y_wall = get_intersect_pt(vars, start_pos, angle, &ft_intersec_y);
-	if (ft_get_distance(start_pos, x_wall) < ft_get_distance(start_pos, y_wall))
-	{		
+	if (getting_distance(start_pos, x_wall)
+		< getting_distance(start_pos, y_wall))
+	{
 		if (direction)
 			*direction = 'h';
 		return (x_wall);

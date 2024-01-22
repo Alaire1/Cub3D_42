@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_player_position.c                           :+:      :+:    :+:   */
+/*   getting_player_position.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybensell <ybensell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/21 10:41:39 by hel-makh          #+#    #+#             */
-/*   Updated: 2022/08/25 10:49:32 by ybensell         ###   ########.fr       */
+/*   Created: 2024/01/22 12:40:24 by narigi-e          #+#    #+#             */
+/*   Updated: 2024/01/22 12:40:30 by narigi-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static void	ft_get_player_angle(t_vars *vars)
+static void	getting_player_angle(t_vars *vars)
 {
 	int		x;
 	int		y;
@@ -29,7 +29,7 @@ static void	ft_get_player_angle(t_vars *vars)
 		vars->player.angle = 0;
 }
 
-void	ft_get_player_position(t_vars *vars)
+void	getting_player_position(t_vars *vars)
 {
 	int	i;
 	int	j;
@@ -44,7 +44,7 @@ void	ft_get_player_position(t_vars *vars)
 			{
 				vars->player.pos.x = (double)j + 0.5;
 				vars->player.pos.y = (double)i + 0.5;
-				ft_get_player_angle(vars);
+				getting_player_angle(vars);
 			}
 			j ++;
 		}

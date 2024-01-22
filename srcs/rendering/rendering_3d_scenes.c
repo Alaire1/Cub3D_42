@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_render_3d_scene.c                               :+:      :+:    :+:   */
+/*   rendering_3d_scenes.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
+/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/26 11:04:10 by hel-makh          #+#    #+#             */
-/*   Updated: 2024/01/21 18:38:23 by akaraban         ###   ########.fr       */
+/*   Created: 2024/01/22 12:41:36 by narigi-e          #+#    #+#             */
+/*   Updated: 2024/01/22 12:41:49 by narigi-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-#define RADIAN_INC	0.06
+// #define RADIAN_INC	0.06
 
-static int
-	ft_get_texture_pixel(t_img img, t_render *render, int ty)
+static int	getting_texture_pixel(t_img img, t_render *render, int ty)
 {
 	int		tx;
 	double	ty_step;
@@ -33,7 +32,7 @@ static int
 	return (img.data[abs(ty) * img.width + abs(tx)]);
 }
 
-static void	ft_draw_pixel(t_vars *vars, t_render *render, int *data, int ty)
+static void	drawing_pixel(t_vars *vars, t_render *render, int *data, int ty)
 {
 	t_img	*img;
 	int		color;
@@ -47,12 +46,12 @@ static void	ft_draw_pixel(t_vars *vars, t_render *render, int *data, int ty)
 		img = &vars->map.west;
 	else
 		img = &vars->map.east;
-	color = ft_get_texture_pixel(*img, render, ty);
+	color = getting_texture_pixel(*img, render, ty);
 	if (color != trgb_to_int(255, 0, 0, 0))
 		*data = color;
 }
 
-static void	ft_draw_walls(t_vars *vars, t_render *render)
+static void	drawing_walls(t_vars *vars, t_render *render)
 {
 	int	x;
 	int	y;
@@ -67,7 +66,7 @@ static void	ft_draw_walls(t_vars *vars, t_render *render)
 		while (x < ((render->degree / RADIAN_INC) * render->wall_dim.width)
 			+ render->wall_dim.width && x < WIDTH)
 		{
-			ft_draw_pixel(vars, render,
+			drawing_pixel(vars, render,
 				&vars->mlx.img.data[y * WIDTH + x], ty - 1);
 			x ++;
 		}
@@ -76,14 +75,14 @@ static void	ft_draw_walls(t_vars *vars, t_render *render)
 	}
 }
 
-static void	ft_get_wall_dims(t_vars *vars, t_render *render,
+static void	getting_walls_dimensions(t_vars *vars, t_render *render,
 	t_coor start_pos, double degree)
 {
 	render->degree = degree;
 	render->hit_wall = ft_get_hit_wall(vars, start_pos,
 			render->angle, &render->direc);
-	render->dist = ft_get_distance(vars->player.pos, render->hit_wall)
-		* cos(ft_radian_operations(vars->player.angle, -render->angle));
+	render->dist = getting_distance(vars->player.pos, render->hit_wall)
+		* cos(radian_calculations(vars->player.angle, -render->angle));
 	render->wall_dim.width = WIDTH / (FOV / RADIAN_INC);
 	render->wall_dim.height = HEIGHT;
 	if (render->dist > 0)
@@ -93,19 +92,19 @@ static void	ft_get_wall_dims(t_vars *vars, t_render *render,
 		render->wall_dim.height = HEIGHT;
 }
 
-void	ft_render_3d_scene(t_vars *vars)
+void	rendering_3d_scenes(t_vars *vars)
 {
 	t_render	render;
 	double		degree;
 
-	ft_draw_floor_ceilling(vars);
+	drawing_floor_and_ceilling(vars);
 	degree = 0;
 	while (degree <= FOV)
 	{
-		render.angle = ft_radian_operations(vars->player.angle,
-				ft_dtor(degree - (FOV / 2)));
-		ft_get_wall_dims(vars, &render, vars->player.pos, degree);
-		ft_draw_walls(vars, &render);
+		render.angle = radian_calculations(vars->player.angle,
+				degree_to_radian(degree - (FOV / 2)));
+		getting_walls_dimensions(vars, &render, vars->player.pos, degree);
+		drawing_walls(vars, &render);
 		degree += RADIAN_INC;
 	}
 }

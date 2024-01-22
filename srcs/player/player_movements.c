@@ -1,42 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_player_movement.c                               :+:      :+:    :+:   */
+/*   player_movements.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-makh <hel-makh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/21 22:27:23 by hel-makh          #+#    #+#             */
-/*   Updated: 2022/08/29 16:43:40 by hel-makh         ###   ########.fr       */
+/*   Created: 2024/01/22 12:40:38 by narigi-e          #+#    #+#             */
+/*   Updated: 2024/01/22 12:40:42 by narigi-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static void	ft_get_player_direction(t_vars *vars)
+static void	getting_player_direction(t_vars *vars)
 {
 	double	direction_angle;
 
 	if (vars->player.rotate)
-		vars->player.angle = ft_radian_operations(vars->player.angle,
+		vars->player.angle = radian_calculations(vars->player.angle,
 				vars->player.rotate * vars->mlx.fspeed * ROT_SPEED);
 	direction_angle = vars->player.angle;
 	if (vars->player.move.y == -1)
-		direction_angle = ft_radian_operations(direction_angle, M_PI);
+		direction_angle = radian_calculations(direction_angle, M_PI);
 	else if (vars->player.move.x)
-		direction_angle = ft_radian_operations(direction_angle,
+		direction_angle = radian_calculations(direction_angle,
 				-vars->player.move.x * M_PI_2);
 	if (vars->player.move.x && vars->player.move.y)
-		direction_angle = ft_radian_operations(direction_angle,
+		direction_angle = radian_calculations(direction_angle,
 				vars->player.move.x * M_PI_4);
 	vars->player.dir.x = cos(direction_angle);
 	vars->player.dir.y = sin(direction_angle);
 }
 
-void	ft_move_player(t_vars *vars)
+void	moving_player(t_vars *vars)
 {
 	t_coor	new_pos;
 
-	ft_get_player_direction(vars);
+	getting_player_direction(vars);
 	if (!(int)vars->player.move.x && !(int)vars->player.move.y)
 		return ;
 	new_pos.x = vars->player.pos.x
@@ -49,7 +49,7 @@ void	ft_move_player(t_vars *vars)
 		vars->player.pos.y = new_pos.y;
 }
 
-int	key_press(int keycode, t_vars *vars)
+int	pressing_keys(int keycode, t_vars *vars)
 {
 	if (keycode == KEY_A)
 		vars->player.move.x = -1;
@@ -64,7 +64,7 @@ int	key_press(int keycode, t_vars *vars)
 	else if (keycode == KEY_RIGHT)
 		vars->player.rotate = 1;
 	else if (keycode == KEY_ESC)
-		ft_exit_game(vars, EXIT_SUCCESS);
+		exiting_game(vars, EXIT_SUCCESS);
 	return (0);
 }
 

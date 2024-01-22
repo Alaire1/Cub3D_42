@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_radian_degree.c                                 :+:      :+:    :+:   */
+/*   getting_current_time.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-makh <hel-makh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/04 16:13:11 by hel-makh          #+#    #+#             */
-/*   Updated: 2022/08/04 16:20:44 by hel-makh         ###   ########.fr       */
+/*   Created: 2024/01/22 12:43:12 by narigi-e          #+#    #+#             */
+/*   Updated: 2024/01/22 12:43:14 by narigi-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-double	ft_rtod(double radian)
+long	getting_current_time(void)
 {
-	return (radian * (180.0 / M_PI));
-}
+	struct timeval	time;
 
-double	ft_dtor(double degree)
-{
-	return (degree * (M_PI / 180.0));
+	gettimeofday(&time, NULL);
+	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
 }

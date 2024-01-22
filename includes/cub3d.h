@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/22 12:46:39 by narigi-e          #+#    #+#             */
+/*   Updated: 2024/01/22 12:46:44 by narigi-e         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 
@@ -8,14 +20,14 @@
 # include <math.h>
 # include <errno.h>
 # include <sys/time.h>
-# include <../Libft/libft.h>
-# include <../mlx/mlx.h>
+# include "../Libft/libft.h"
+# include "../mlx/mlx.h"
 
 # define USAGE	"Usage: ./cub3d <file.cub>"
+# define RADIAN_INC	0.06
 
-//COLORS
-#define RED "\x1B[0;31m"
-#define RESET "\x1B[0m"
+# define RED "\x1B[0;31m"
+# define RESET "\x1B[0m"
 
 # define ERROR 1
 # define SUCCESS 0
@@ -161,18 +173,17 @@ typedef struct s_vars
 }	t_vars;
 
 /**************************[ Utils ]**************************/
-long	ft_get_current_time(void);
+long	getting_current_time(void);
 int		trgb_to_int(int t, int red, int green, int blue);
-double	ft_get_distance(t_coor poin1, t_coor point2);
-int		ft_is_in_circle(double x, double y, t_circle circle);
-double	ft_rtod(double radian);
-double	ft_dtor(double degree);
-double	ft_radian_operations(double radian, double amout);
+double	getting_distance(t_coor poin1, t_coor point2);
+double	radian_to_degree(double radian);
+double	degree_to_radian(double degree);
+double	radian_calculations(double radian, double amout);
 
 /*************************[ Parsing ]*************************/
 int		check_for_valid_input(char **argv, int argc); //my function
 void	print_error(char *error); //my function // needs to be taken to different file
-int		ft_import_map(t_vars *vars, char *file);
+int		importing_map(t_vars *vars, char *file);
 int		ft_parse_textures(t_vars *vars, int fd);
 int		ft_get_textures(t_vars *vars, char **info);
 int		ft_component_surroundings(char **map, int i, int j);
@@ -180,24 +191,22 @@ int		check_map_size(t_vars *info, int fd); //my function
 int		copy_map_to_info(t_vars *info, char *file); //my function
 
 /************************[ Movements ]************************/
-void	ft_get_player_position(t_vars *vars);
-int		key_press(int keycode, t_vars *vars);
+void	getting_player_position(t_vars *vars);
+int		pressing_keys(int keycode, t_vars *vars);
 int		key_release(int keycode, t_vars *vars);
-void	ft_move_player(t_vars *vars);
+void	moving_player(t_vars *vars);
 
 /************************[ RayCasting ]***********************/
 t_coor	ft_get_hit_wall(t_vars *vars, t_coor start_pos,
 			double angle, int *direction);
 
 /************************[ Rendering ]************************/
-int		ft_init_images(t_vars *vars);
-int		frame_rendering(t_vars *vars);
-void	ft_draw_rays(t_vars *vars, t_circle minimap);
-void	ft_render_3d_scene(t_vars *vars);
-void	ft_draw_floor_ceilling(t_vars *vars);
-void	ft_open_close_door(t_vars *vars);
+int		initializing_images(t_vars *vars);
+int		rendering_frames(t_vars *vars);
+void	rendering_3d_scenes(t_vars *vars);
+void	drawing_floor_and_ceilling(t_vars *vars);
 
 /**************************[ Other ]**************************/
-int		ft_exit_game(t_vars *vars, int exit_status);
+int		exiting_game(t_vars *vars, int exit_status);
 
 #endif

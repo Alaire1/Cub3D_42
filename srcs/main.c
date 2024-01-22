@@ -1,20 +1,8 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/05 11:49:49 by hel-makh          #+#    #+#             */
-/*   Updated: 2024/01/21 20:04:24 by akaraban         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes/cub3d.h"
 
 int	exit_game(t_vars *vars)
 {
-	ft_exit_game(vars, EXIT_SUCCESS);
+	exiting_game(vars, EXIT_SUCCESS);
 	return (EXIT_SUCCESS);
 }
 
@@ -58,18 +46,18 @@ static void init_main_struct(t_vars *info) // ours
 	init_player(&info->player);
 
 }
-static void	ft_start_game(t_vars *vars)
+static void	starting_game(t_vars *vars)
 {
 	vars->mlx.win = mlx_new_window(vars->mlx.mlx, WIDTH, HEIGHT, "cub3d");
 	if (!vars->mlx.win)
 	{
 		printf("Error\nCouldn't open window.\n");
-		ft_exit_game(vars, EXIT_FAILURE);
+		exiting_game(vars, EXIT_FAILURE);
 	}
-	mlx_hook(vars->mlx.win, 02, (1L << 0), key_press, vars);
+	mlx_hook(vars->mlx.win, 02, (1L << 0), pressing_keys, vars);
 	mlx_hook(vars->mlx.win, 03, (1L << 1), key_release, vars);
 	mlx_hook(vars->mlx.win, 17, 0L, exit_game, vars);
-	mlx_loop_hook(vars->mlx.mlx, frame_rendering, vars);
+	mlx_loop_hook(vars->mlx.mlx, rendering_frames, vars);
 	mlx_loop(vars->mlx.mlx);
 }
 
@@ -79,10 +67,10 @@ int	main(int argc, char **argv)
 
 	check_for_valid_input(argv, argc);
 	init_main_struct(&info);
-	if (!ft_import_map(&info, argv[1]))
-		ft_exit_game(&info, EXIT_FAILURE);
-	if (!ft_init_images(&info))
-		ft_exit_game(&info, EXIT_FAILURE);
-	ft_start_game(&info);
+	if (!importing_map(&info, argv[1]))
+		exiting_game(&info, EXIT_FAILURE);
+	if (!initializing_images(&info))
+		exiting_game(&info, EXIT_FAILURE);
+	starting_game(&info);
 	return (EXIT_SUCCESS);
 }

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_draw_floor_ceilling.c                           :+:      :+:    :+:   */
+/*   drawing_floor_and_ceilling.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
+/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/01 20:50:59 by hel-makh          #+#    #+#             */
-/*   Updated: 2024/01/20 14:59:07 by akaraban         ###   ########.fr       */
+/*   Created: 2024/01/22 12:41:12 by narigi-e          #+#    #+#             */
+/*   Updated: 2024/01/22 12:41:16 by narigi-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	ft_draw_floor_ceilling(t_vars *vars)
+void	drawing_floor_and_ceilling(t_vars *vars)
 {
 	int	x;
 	int	y;

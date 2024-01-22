@@ -242,7 +242,7 @@ static int check_walls(t_vars *info) //seems to work but will do more tests
 	return (1);
 }
 
-int	ft_import_map(t_vars *vars, char *file)
+int	importing_map(t_vars *vars, char *file)
 {
 	int		fd;
 
@@ -264,6 +264,6 @@ int	ft_import_map(t_vars *vars, char *file)
 	}
 	if (check_walls(vars) == 0)	
 		return (0);
-	ft_get_player_position(vars);
+	getting_player_position(vars);
 	return (1);
 }

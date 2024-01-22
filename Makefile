@@ -1,22 +1,19 @@
 HEADER			=	includes/cub3d.h
 NAME			=	cub3d
-FILES			=	utils/ft_get_current_time.c\
-					utils/ft_get_distance.c\
-					utils/ft_is_in_circle.c\
-					utils/ft_radian_degree.c\
-					utils/ft_exit_game.c\
-					utils/ft_radian_operations.c\
+FILES			=	utils/getting_current_time.c\
+					utils/getting_distances.c\
+					utils/exiting_game.c\
+					utils/radian_calculations.c\
 					parsing/check_input_validity.c \
 					parsing/copy_map_info.c\
 					parsing/parse_map.c\
 					parsing/import_map.c \
-					player/ft_get_player_position.c\
-					player/ft_player_movement.c\
+					player/getting_player_position.c\
+					player/player_movements.c\
 					rendering/ft_get_hit_wall.c\
-					rendering/ft_frame_rendering.c\
-					rendering/ft_draw_rays.c\
-					rendering/ft_render_3d_scene.c\
-					rendering/ft_draw_floor_ceilling.c \
+					rendering/rendering_frames.c\
+					rendering/rendering_3d_scenes.c\
+					rendering/drawing_floor_and_ceilling.c \
 					main.c
 SRCS_DIR		=	srcs/
 SRCS			=	$(addprefix $(SRCS_DIR), $(FILES))
@@ -27,7 +24,6 @@ CFLAGS			=	-Wall -Wextra -Werror
 LIBFT_DIR		=	./Libft
 LIBFT			=	$(LIBFT_DIR)/libft.a
 LIBFT_IFLAGS	=	-ILibft
-# UNAME_S := $(shell uname -s)
 MLX_DIR		=	mlx
 MLX			=	$(MLX_DIR)/libmlx.a
 MLX_IFLAGS	=	-Imlx_macos

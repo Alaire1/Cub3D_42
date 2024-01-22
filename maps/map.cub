@@ -1,8 +1,8 @@
 
-NO ./mandatory/textures/wall.xpm
-SO ./mandatory/textures/wall.xpm
-WE ./mandatory/textures/wall_west.xpm
-EA ./mandatory/textures/wall_east.xpm
+NO ./textures/wall.xpm
+SO ./textures/wall.xpm
+WE ./textures/wall_west.xpm
+EA ./textures/wall_east.xpm
 
 F 100,100,100
 C 0,170,219

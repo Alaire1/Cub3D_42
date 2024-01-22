@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_distance.c                                  :+:      :+:    :+:   */
+/*   getting_distances.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-makh <hel-makh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/23 15:15:56 by hel-makh          #+#    #+#             */
-/*   Updated: 2022/06/23 15:30:40 by hel-makh         ###   ########.fr       */
+/*   Created: 2024/01/22 12:43:16 by narigi-e          #+#    #+#             */
+/*   Updated: 2024/01/22 12:43:18 by narigi-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-double	ft_get_distance(t_coor point1, t_coor point2)
+double	getting_distance(t_coor point1, t_coor point2)
 {
 	t_coor	dist;
 
