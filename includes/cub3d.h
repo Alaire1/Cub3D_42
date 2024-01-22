@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/05 11:43:14 by hel-makh          #+#    #+#             */
-/*   Updated: 2024/01/21 18:44:03 by akaraban         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef CUB3D_H
 # define CUB3D_H
 
@@ -36,8 +24,8 @@
 # define SPACE			' '
 # define EMPTY_SPACE	'0'
 # define WALL			'1'
-# define C_DOOR			'2'
-# define O_DOOR			'3'
+// # define C_DOOR			'2'
+// # define O_DOOR			'3'
 # define P_NORTH		'N'
 # define P_SOUTH		'S'
 # define P_EAST			'E'
@@ -45,23 +33,8 @@
 # define HIT_WALLS		"1"
 
 /***********************[ Enumeration ]***********************/
-# if defined(__linux__)
-
-enum e_keycodes {
-	KEY_ESC = 65307,
-	KEY_A = 97,
-	KEY_W = 119,
-	KEY_D = 100,
-	KEY_S = 115,
-	KEY_LEFT = 65361,
-	KEY_UP = 65362,
-	KEY_RIGHT = 65363,
-	KEY_DOWN = 65364
-};
-
-# elif defined(__APPLE__) && defined(__MACH__)
-
-enum e_keycodes {
+enum e_keycodes
+{
 	KEY_ESC = 53,
 	KEY_A = 0,
 	KEY_W = 13,
@@ -73,25 +46,25 @@ enum e_keycodes {
 	KEY_DOWN = 125
 };
 
-# endif
-
-enum e_window {
+enum e_window
+{
 	WIDTH = 850,
 	HEIGHT = 500,
 	FPS_X = 5,
 	FPS_Y = 15
 };
 
-enum e_minimap {
-	BORDER = 10,
-	RADIUS = 60,
-	CENTER = BORDER + RADIUS,
-	C_VISIBLE = 10,
-	C_SIDE_LEN = (RADIUS * 2) / C_VISIBLE,
-	PL_RADIUS = 2
-};
+// enum e_minimap {
+// 	BORDER = 10,
+// 	RADIUS = 60,
+// 	CENTER = BORDER + RADIUS,
+// 	C_VISIBLE = 10,
+// 	C_SIDE_LEN = (RADIUS * 2) / C_VISIBLE,
+// 	PL_RADIUS = 2
+// };
 
-enum e_player {
+enum e_player
+{
 	SPEED = 4,
 	ROT_SPEED = 3,
 	MOUSE_ROT_SPEED = 5,
@@ -99,23 +72,27 @@ enum e_player {
 };
 
 /************************[ Structers ]************************/
-typedef struct s_circle {
+typedef struct s_circle
+{
 	double	x;
 	double	y;
 	double	radius;
 }	t_circle;
 
-typedef struct s_dim {
+typedef struct s_dim
+{
 	double	width;
 	double	height;
 }	t_dim;
 
-typedef struct s_coor {
+typedef struct s_coor
+{
 	double	x;
 	double	y;
 }	t_coor;
 
-typedef struct s_render {
+typedef struct s_render
+{
 	double			degree;
 	double			angle;
 	t_coor			hit_wall;
@@ -126,12 +103,14 @@ typedef struct s_render {
 	struct s_render	*next;
 }	t_render;
 
-typedef struct s_content {
+typedef struct s_content
+{
 	int	wall;
 	int	player;
 }	t_content;
 
-typedef struct s_player {
+typedef struct s_player
+{
 	t_coor	pos;
 	double	angle;
 	t_coor	dir;
@@ -139,7 +118,8 @@ typedef struct s_player {
 	double	rotate;
 }	t_player;
 
-typedef struct s_img {
+typedef struct s_img
+{
 	void	*img;
 	int		*data;
 	int		bpp;
@@ -149,7 +129,8 @@ typedef struct s_img {
 	int		height;
 }	t_img;
 
-typedef struct s_map {
+typedef struct s_map
+{
 	char	**map;
 	int		ce_color;
 	int		fl_color;
@@ -163,7 +144,8 @@ typedef struct s_map {
 	t_img	east;
 }	t_map;
 
-typedef struct s_mlx {
+typedef struct s_mlx
+{
 	void	*mlx;
 	void	*win;
 	t_img	img;
@@ -171,7 +153,8 @@ typedef struct s_mlx {
 	double	fspeed;
 }	t_mlx;
 
-typedef struct s_vars {
+typedef struct s_vars
+{
 	t_mlx		mlx;
 	t_map		map;
 	t_player	player;
