@@ -3,16 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-makh <hel-makh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/16 19:22:20 by hel-makh          #+#    #+#             */
-/*   Updated: 2022/08/16 14:29:13 by hel-makh         ###   ########.fr       */
+/*   Created: 2024/01/22 14:36:27 by narigi-e          #+#    #+#             */
+/*   Updated: 2024/01/22 14:36:37 by narigi-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <fcntl.h>
-#include <stdlib.h>
 #include "libft.h"
 
 static char	*get_fd_content(int fd, t_list **fd_list)

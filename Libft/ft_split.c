@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-makh <hel-makh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 13:55:32 by hel-makh          #+#    #+#             */
-/*   Updated: 2021/12/29 11:53:58 by hel-makh         ###   ########.fr       */
+/*   Created: 2024/01/22 14:29:55 by narigi-e          #+#    #+#             */
+/*   Updated: 2024/01/22 14:39:44 by narigi-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 static char	**ft_free_arr(int i, char **arr)
@@ -39,7 +38,7 @@ static size_t	ft_count_strs(char const *s, char c)
 	count = 0;
 	i = 0;
 	while (s[i] && s[i] == c)
-		i ++;
+		i++;
 	if (s[i] && s[i] != c)
 	{
 		count++;
@@ -77,7 +76,7 @@ char	**ft_split(char const *s, char c)
 		if (arr[i] == NULL)
 			return (ft_free_arr(i, arr));
 		j += str_len;
-		i ++;
+		i++;
 	}
 	arr[i] = 0;
 	return (arr);

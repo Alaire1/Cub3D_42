@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/22 12:48:33 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/22 12:48:37 by narigi-e         ###   ########.fr       */
+/*   Created: 2024/01/22 14:21:52 by narigi-e          #+#    #+#             */
+/*   Updated: 2024/01/22 14:37:28 by narigi-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	**ft_add_str2arr(char **array, char *str)
 		new_array[i] = ft_strdup(array[i]);
 		if (!new_array[i])
 			return (ft_free_2d(new_array), NULL);
-		i ++;
+		i++;
 	}
 	new_array[i] = ft_strdup(str);
 	if (!new_array[i])

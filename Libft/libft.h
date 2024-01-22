@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-makh <hel-makh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/06 18:28:42 by hel-makh          #+#    #+#             */
-/*   Updated: 2022/08/16 15:26:20 by hel-makh         ###   ########.fr       */
+/*   Created: 2024/01/22 14:29:46 by narigi-e          #+#    #+#             */
+/*   Updated: 2024/01/22 14:31:13 by narigi-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define LIBFT_H
 
 # include <stdlib.h>
+# include <stdio.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <stdint.h>
 
 # define BUFFER_SIZE 42
 
@@ -22,13 +26,14 @@ typedef struct s_list
 	int				fd;
 	char			content[BUFFER_SIZE + 1];
 	struct s_list	*next;
-}	t_list;
+}				t_list;
 
-typedef struct s_index {
+typedef struct s_index
+{
 	size_t	i;
 	size_t	j;
 	size_t	k;
-}	t_index;
+}				t_index;
 
 int		ft_max(int x, int y);
 int		ft_min(int x, int y);

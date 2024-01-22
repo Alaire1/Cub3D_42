@@ -6,7 +6,7 @@
 /*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:48:41 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/22 12:48:44 by narigi-e         ###   ########.fr       */
+/*   Updated: 2024/01/22 14:37:19 by narigi-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_arr_has_str(char **arr, char *str)
 	{
 		if (ft_strcmp(arr[i], str) == 0)
 			return (1);
-		i ++;
+		i++;
 	}
 	return (0);
 }

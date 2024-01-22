@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-makh <hel-makh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/26 11:35:25 by hel-makh          #+#    #+#             */
-/*   Updated: 2022/03/26 11:35:38 by hel-makh         ###   ########.fr       */
+/*   Created: 2024/01/22 14:30:33 by narigi-e          #+#    #+#             */
+/*   Updated: 2024/01/22 14:40:03 by narigi-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strcpy(char *dst, const char *src)
 	while (src[i] != '\0')
 	{
 		dst[i] = src[i];
-		i ++;
+		i++;
 	}
 	dst[i] = '\0';
 	return (dst);

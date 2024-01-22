@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-makh <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 18:47:20 by hel-makh          #+#    #+#             */
-/*   Updated: 2021/11/01 18:47:22 by hel-makh         ###   ########.fr       */
+/*   Created: 2024/01/22 14:26:59 by narigi-e          #+#    #+#             */
+/*   Updated: 2024/01/22 14:26:59 by narigi-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
@@ -25,7 +24,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 		if ((i > 0 && !(unsigned char)buffer[i])
 			|| (unsigned char)buffer[i] == (unsigned char)c)
 			return ((void *)&buffer[i]);
-		i ++;
+		i++;
 	}
 	return (0);
 }

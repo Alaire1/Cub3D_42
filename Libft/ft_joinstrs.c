@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_joinstrs.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-makh <hel-makh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/27 19:23:19 by hel-makh          #+#    #+#             */
-/*   Updated: 2022/03/27 22:16:17 by hel-makh         ###   ########.fr       */
+/*   Created: 2024/01/22 14:26:22 by narigi-e          #+#    #+#             */
+/*   Updated: 2024/01/22 14:38:35 by narigi-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*ft_joinstrs(char **array, char c)
 			if (!str)
 				return (ft_free(str), NULL);
 		}
-		i ++;
+		i++;
 	}
 	return (str);
 }

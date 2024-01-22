@@ -21,13 +21,13 @@ OBJS_DIR		=	objs/
 OBJS			=	$(patsubst %.c, %.o, $(addprefix $(OBJS_DIR), $(FILES)))
 CC				=	cc
 CFLAGS			=	-Wall -Wextra -Werror
-LIBFT_DIR		=	./Libft
+LIBFT_DIR		=	./libft
 LIBFT			=	$(LIBFT_DIR)/libft.a
 LIBFT_IFLAGS	=	-ILibft
-MLX_DIR		=	mlx
-MLX			=	$(MLX_DIR)/libmlx.a
-MLX_IFLAGS	=	-Imlx_macos
-MLX_LFLAGS	=	-framework OpenGL -framework AppKit
+MLX_DIR			=	mlx
+MLX				=	$(MLX_DIR)/libmlx.a
+MLX_IFLAGS		=	-Imlx_macos
+MLX_LFLAGS		=	-framework OpenGL -framework AppKit
 
 $(OBJS_DIR)%.o:$(SRCS_DIR)%.c				$(HEADER)
 	@mkdir -p $(shell dirname $@)

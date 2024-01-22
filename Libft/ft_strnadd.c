@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnadd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-makh <hel-makh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/30 11:07:32 by hel-makh          #+#    #+#             */
-/*   Updated: 2022/03/30 11:07:50 by hel-makh         ###   ########.fr       */
+/*   Created: 2024/01/22 14:33:59 by narigi-e          #+#    #+#             */
+/*   Updated: 2024/01/22 14:40:33 by narigi-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*ft_strnadd(char const *s1, char const *s2, size_t n)
 	while (s2[i] != '\0' && i < n)
 	{
 		buffer[i + buffer_len] = s2[i];
-		i ++;
+		i++;
 	}
 	buffer[i + buffer_len] = '\0';
 	free((void *)s1);

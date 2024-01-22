@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-makh <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/04 12:28:48 by hel-makh          #+#    #+#             */
-/*   Updated: 2021/11/04 12:28:49 by hel-makh         ###   ########.fr       */
+/*   Created: 2024/01/22 14:26:12 by narigi-e          #+#    #+#             */
+/*   Updated: 2024/01/22 14:38:29 by narigi-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 static int	ft_intlen(int n, int count_zero)
@@ -22,7 +21,7 @@ static int	ft_intlen(int n, int count_zero)
 		return (1);
 	while (n != 0)
 	{
-		intlen ++;
+		intlen++;
 		n /= 10;
 	}
 	return (intlen);

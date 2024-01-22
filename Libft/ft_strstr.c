@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-makh <hel-makh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/30 23:13:15 by hel-makh          #+#    #+#             */
-/*   Updated: 2022/03/30 23:13:24 by hel-makh         ###   ########.fr       */
+/*   Created: 2024/01/22 14:35:09 by narigi-e          #+#    #+#             */
+/*   Updated: 2024/01/22 14:35:17 by narigi-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ char	*ft_strstr(const char *haystack, const char *needle)
 		{
 			if (needle[j + 1] == '\0')
 				return ((char *)&haystack[i]);
-			j ++;
+			j++;
 		}
-		i ++;
+		i++;
 	}
 	return (0);
 }

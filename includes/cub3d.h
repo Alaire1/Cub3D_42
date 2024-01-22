@@ -6,7 +6,7 @@
 /*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:46:39 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/22 12:46:44 by narigi-e         ###   ########.fr       */
+/*   Updated: 2024/01/22 14:25:59 by narigi-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@
 # include <math.h>
 # include <errno.h>
 # include <sys/time.h>
-# include "../Libft/libft.h"
+# include "../libft/libft.h"
 # include "../mlx/mlx.h"
 
-# define USAGE	"Usage: ./cub3d <file.cub>"
-# define RADIAN_INC	0.06
+# define USAGE			"Usage: ./cub3d <file.cub>"
+# define RADIAN_INC		0.06
 
-# define RED "\x1B[0;31m"
-# define RESET "\x1B[0m"
+# define RED 			"\x1B[0;31m"
+# define RESET 			"\x1B[0m"
 
-# define ERROR 1
-# define SUCCESS 0
+# define ERROR 			1
+# define SUCCESS		0
 
 /***********************[ Components ]***********************/
 # define SPACE			' '
@@ -65,15 +65,6 @@ enum e_window
 	FPS_X = 5,
 	FPS_Y = 15
 };
-
-// enum e_minimap {
-// 	BORDER = 10,
-// 	RADIUS = 60,
-// 	CENTER = BORDER + RADIUS,
-// 	C_VISIBLE = 10,
-// 	C_SIDE_LEN = (RADIUS * 2) / C_VISIBLE,
-// 	PL_RADIUS = 2
-// };
 
 enum e_player
 {

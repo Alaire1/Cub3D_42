@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isnumber.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-makh <hel-makh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/07 12:39:11 by hel-makh          #+#    #+#             */
-/*   Updated: 2022/06/07 12:47:30 by hel-makh         ###   ########.fr       */
+/*   Created: 2024/01/22 14:23:35 by narigi-e          #+#    #+#             */
+/*   Updated: 2024/01/22 14:38:18 by narigi-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ int	ft_isnumber(const char *str)
 
 	i = 0;
 	if (str[i] == '+' || str[i] == '-')
-		i ++;
+		i++;
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
 			return (0);
-		i ++;
+		i++;
 	}
 	return (1);
 }

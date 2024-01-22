@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_stradd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-makh <hel-makh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 10:54:29 by hel-makh          #+#    #+#             */
-/*   Updated: 2022/03/26 11:37:16 by hel-makh         ###   ########.fr       */
+/*   Created: 2024/01/22 14:30:06 by narigi-e          #+#    #+#             */
+/*   Updated: 2024/01/22 14:30:10 by narigi-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 char	*ft_stradd(char const *s1, char const *s2)

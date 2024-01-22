@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_arrdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-makh <hel-makh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/24 23:44:35 by hel-makh          #+#    #+#             */
-/*   Updated: 2022/03/24 23:46:51 by hel-makh         ###   ########.fr       */
+/*   Created: 2024/01/22 14:22:09 by narigi-e          #+#    #+#             */
+/*   Updated: 2024/01/22 14:22:09 by narigi-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	**ft_arrdup(char **array)
 			new_array = ft_free_2d(new_array);
 			return (NULL);
 		}
-		i ++;
+		i++;
 	}
 	return (new_array);
 }

@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-makh <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 18:48:16 by hel-makh          #+#    #+#             */
-/*   Updated: 2021/11/01 18:48:18 by hel-makh         ###   ########.fr       */
+/*   Created: 2024/01/22 14:27:38 by narigi-e          #+#    #+#             */
+/*   Updated: 2024/01/22 14:27:38 by narigi-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 void	*ft_memset(void *b, int c, size_t len)
@@ -23,7 +22,7 @@ void	*ft_memset(void *b, int c, size_t len)
 	while (i < len)
 	{
 		buffer[i] = (unsigned char)c;
-		i ++;
+		i++;
 	}
 	return (buffer);
 }

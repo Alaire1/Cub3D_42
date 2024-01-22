@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-makh <hel-makh@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/19 12:30:23 by hel-makh          #+#    #+#             */
-/*   Updated: 2022/03/24 15:06:39 by hel-makh         ###   ########.fr       */
+/*   Created: 2024/01/22 14:30:27 by narigi-e          #+#    #+#             */
+/*   Updated: 2024/01/22 14:39:58 by narigi-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_strcmp(const char *s1, const char *s2)
 	{
 		if (s1[i] != s2[i])
 			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-		i ++;
+		i++;
 	}
 	return (0);
 }

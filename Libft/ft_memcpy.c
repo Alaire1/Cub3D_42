@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-makh <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 18:47:39 by hel-makh          #+#    #+#             */
-/*   Updated: 2021/11/01 18:47:43 by hel-makh         ###   ########.fr       */
+/*   Created: 2024/01/22 14:27:17 by narigi-e          #+#    #+#             */
+/*   Updated: 2024/01/22 14:27:17 by narigi-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
@@ -27,7 +26,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	while (i < n)
 	{
 		dest[i] = source[i];
-		i ++;
+		i++;
 	}
 	return (dest);
 }

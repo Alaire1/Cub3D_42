@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hel-makh <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 10:21:16 by hel-makh          #+#    #+#             */
-/*   Updated: 2021/11/02 10:49:58 by hel-makh         ###   ########.fr       */
+/*   Created: 2024/01/22 14:35:39 by narigi-e          #+#    #+#             */
+/*   Updated: 2024/01/22 14:35:54 by narigi-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 static char	*ft_strncpy(char *dst, const char *src, size_t len)
@@ -26,7 +25,7 @@ static char	*ft_strncpy(char *dst, const char *src, size_t len)
 			dst[i] = src[i];
 		else
 			dst[i] = '\0';
-		i ++;
+		i++;
 	}
 	return (dst);
 }
