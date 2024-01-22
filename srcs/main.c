@@ -43,9 +43,9 @@ static void init_main_struct(t_vars *info) // ours
 {
 	init_map(&info->map);
 	init_mlx(&info->mlx);
-	init_player(&info->player);
-
+	
 }
+
 static void	starting_game(t_vars *vars)
 {
 	vars->mlx.win = mlx_new_window(vars->mlx.mlx, WIDTH, HEIGHT, "cub3d");
@@ -54,6 +54,7 @@ static void	starting_game(t_vars *vars)
 		printf("Error\nCouldn't open window.\n");
 		exiting_game(vars, EXIT_FAILURE);
 	}
+	init_player(&vars->player);
 	mlx_hook(vars->mlx.win, 02, (1L << 0), pressing_keys, vars);
 	mlx_hook(vars->mlx.win, 03, (1L << 1), key_release, vars);
 	mlx_hook(vars->mlx.win, 17, 0L, exit_game, vars);

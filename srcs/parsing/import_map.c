@@ -1,6 +1,6 @@
 #include "../../includes/cub3d.h"
 
-static void ft_free_array(char **arr)
+void ft_free_array(char **arr)
 {
 	int i;
 
@@ -138,6 +138,7 @@ static int all_info_read(t_map *map)
 		return (0);
 	return (1);
 }
+
 static int is_texture_duplicated(t_map *map, char **arr)
 {
 	if (map->north.img != NULL && !ft_strcmp(arr[0], "NO"))
@@ -195,7 +196,7 @@ static int	get_map_info(t_vars *main, int fd)
 			main->map.start_map_index++;
 			array = ft_split(line, ' ');
 			if (check_textures(main, array) == 0)
-				return (ft_free_array(array), 0);
+				return (ft_free_array(array), free(line), 0);
 			ft_free_array(array);
 		}
 		free(line);
@@ -203,7 +204,7 @@ static int	get_map_info(t_vars *main, int fd)
 	return (1);
 }
 
-static int read_textures(t_vars *info, int fd) // needs to be chnaged very useless
+static int read_textures(t_vars *info, int fd) // needs to be changed very useless
 {
     if (!get_map_info(info, fd))
         return (0);

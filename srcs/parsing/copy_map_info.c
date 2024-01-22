@@ -22,12 +22,16 @@ static void open_file(char *file, int *fd) //may be changed
 
 static void skip_lines(int fd, int lines_to_skip)
 {
-    int i = 0;
-    while(i <= lines_to_skip)
-    {
-        get_next_line(fd);
-        i++;
-    }
+	int i;
+	char *line;
+
+	i = 0;
+	while(i <= lines_to_skip)
+	{
+    	line = get_next_line(fd);
+    	free(line);
+    	i++;
+	}
 }
 
 static void allocate_map(t_vars *info)
@@ -36,6 +40,7 @@ static void allocate_map(t_vars *info)
     info->map.map = malloc(sizeof(char *) * (info->map.height + 1));
     if (!info->map.map)
         return (print_error("Malloc failed.\n"));
+	info->map.map[info->map.height + 1] = NULL;
     while (i < info->map.height)
     {
         info->map.map[i] = malloc(sizeof(char) * (info->map.width + 1));
@@ -47,8 +52,10 @@ static void allocate_map(t_vars *info)
 
 static void fill_map(t_vars *info, int fd)
 {
-    int i = 0;
+    int i;
     char *line;
+
+	i = 0;
     while (i < info->map.height)
     {
         line = get_next_line(fd);

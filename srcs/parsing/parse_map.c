@@ -54,9 +54,6 @@ static int only_spaces(char *line)
 
 static int empty_line(char *line)
 {
-	// int i;
-
-	// i = 0;
 	if (ft_strcmp(line , "\n") == 0)
 		return (1);
 	else if (ft_strcmp(line , "") == 0)
@@ -69,9 +66,7 @@ static int empty_line(char *line)
 static int get_map_size(t_map *map, int fd)
 {
 	char	*line;
-	int		i;
-
-	i = 0;
+	
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -81,7 +76,10 @@ static int get_map_size(t_map *map, int fd)
 		{
 			map->start_map_index++;
 			if (map->height != 0 && map->width != 0)
-				break; 
+				{
+					free(line);
+					break;
+				}
 		}
 		if (*line)
 		{
@@ -92,7 +90,6 @@ static int get_map_size(t_map *map, int fd)
 				map->width = ft_strlen(line);
 		}
 		free(line);
-		i++;
 	}
 	return (1);
 }
