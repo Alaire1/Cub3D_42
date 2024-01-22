@@ -12,7 +12,7 @@
 
 #include "../../includes/cub3d.h"
 
-static void	ft_draw_line(t_vars *vars, t_coor dest, t_circle minimap)
+static void	ft_draw_line(t_vars *vars, t_coor dest)
 {
 	int		steps;
 	t_coor	inc;

@@ -54,9 +54,9 @@ static int only_spaces(char *line)
 
 static int empty_line(char *line)
 {
-	int i;
+	// int i;
 
-	i = 0;
+	// i = 0;
 	if (ft_strcmp(line , "\n") == 0)
 		return (1);
 	else if (ft_strcmp(line , "") == 0)

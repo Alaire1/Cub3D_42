@@ -8,8 +8,8 @@
 # include <math.h>
 # include <errno.h>
 # include <sys/time.h>
-# include <libft.h>
-# include <mlx.h>
+# include <../Libft/libft.h>
+# include <../mlx/mlx.h>
 
 # define USAGE	"Usage: ./cub3d <file.cub>"
 
@@ -24,8 +24,8 @@
 # define SPACE			' '
 # define EMPTY_SPACE	'0'
 # define WALL			'1'
-// # define C_DOOR			'2'
-// # define O_DOOR			'3'
+# define C_DOOR			'2'
+# define O_DOOR			'3'
 # define P_NORTH		'N'
 # define P_SOUTH		'S'
 # define P_EAST			'E'
