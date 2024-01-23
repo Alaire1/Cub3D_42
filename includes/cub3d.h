@@ -6,7 +6,7 @@
 /*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:46:39 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/22 14:25:59 by narigi-e         ###   ########.fr       */
+/*   Updated: 2024/01/23 12:22:10 by narigi-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,6 @@ enum e_player
 };
 
 /************************[ Structers ]************************/
-typedef struct s_circle
-{
-	double	x;
-	double	y;
-	double	radius;
-}	t_circle;
-
 typedef struct s_dim
 {
 	double	width;
@@ -180,6 +173,29 @@ int		ft_get_textures(t_vars *vars, char **info);
 int		ft_component_surroundings(char **map, int i, int j);
 int		check_map_size(t_vars *info, int fd); //my function
 int		copy_map_to_info(t_vars *info, char *file); //my function
+int		check_walls(t_vars *info);
+int		importing_map(t_vars *vars, char *file);
+
+/***************[ utils_1 ]***************/
+void	ft_free_array(char **arr);
+int		array_len(char **arr);
+int		ft_isnumber2(const char *str);
+int		trgb_to_int(int t, int red, int green, int blue);
+int		validate_rgb_values(char **arr);
+
+/***************[ utils_2 ]***************/
+int		is_texture_duplicated(t_map *map, char **arr);
+int		is_form_valid(char **arr);
+int		check_textures(t_vars *info, char **array);
+int		get_map_info(t_vars *main, int fd);
+int		read_textures(t_vars *info, int fd);
+
+/***************[ utils_3 ]***************/
+int		validate_rgb_range(int *rgb);
+int		get_color_rgb(int *color, char **info);
+int		get_image(t_vars *info, t_img *img, char *path);
+int		save_textures(t_vars *info, char **arr);
+int		all_info_read(t_map *map);
 
 /************************[ Movements ]************************/
 void	getting_player_position(t_vars *vars);

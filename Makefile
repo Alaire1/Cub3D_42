@@ -22,6 +22,9 @@ FILES			=	utils/getting_current_time.c\
 					parsing/copy_map_info.c\
 					parsing/parse_map.c\
 					parsing/import_map.c \
+					parsing/utils_1.c \
+					parsing/utils_2.c \
+					parsing/utils_3.c \
 					player/getting_player_position.c\
 					player/player_movements.c\
 					rendering/get_hit_wall.c\
