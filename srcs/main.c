@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/23 11:05:53 by narigi-e          #+#    #+#             */
+/*   Updated: 2024/01/23 11:08:17 by narigi-e         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
 int	exit_game(t_vars *vars)
@@ -6,13 +18,12 @@ int	exit_game(t_vars *vars)
 	return (EXIT_SUCCESS);
 }
 
-
-void init_map(t_map *map)  //ours
+void	init_map(t_map *map)//ours
 {
-	map->ce_color = -1;  
-	map->fl_color = -1;  
-	map->map = NULL;   
-	map->height = 0; //need to add later
+	map->ce_color = -1;
+	map->fl_color = -1;
+	map->map = NULL;
+	map->height = 0;//need to add later
 	map->width = 0;
 	map->start_map_index = 0;
 	map->player_count = 0;
@@ -22,7 +33,7 @@ void init_map(t_map *map)  //ours
 	map->east.img = NULL;
 }
 
-static void init_mlx(t_mlx *mlx) // ours
+static void	init_mlx(t_mlx *mlx) // ours
 {
 	mlx->win = NULL;
 	mlx->img.img = NULL;
@@ -32,18 +43,17 @@ static void init_mlx(t_mlx *mlx) // ours
 		print_error("mlx_init() failed");
 }
 
-static void init_player(t_player *player) // ours
+static void	init_player(t_player *player)// ours
 {
 	player->move.x = 0;
 	player->move.y = 0;
 	player->rotate = 0;
 }
 
-static void init_main_struct(t_vars *info) // ours
+static void	init_main_struct(t_vars *info)// ours
 {
 	init_map(&info->map);
 	init_mlx(&info->mlx);
-	
 }
 
 static void	starting_game(t_vars *vars)
