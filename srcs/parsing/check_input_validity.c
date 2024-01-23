@@ -1,26 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_input_validity.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/23 11:09:23 by narigi-e          #+#    #+#             */
+/*   Updated: 2024/01/23 11:13:43 by narigi-e         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void print_error(char *error)
+void	print_error(char *error)
 {
+	char	*color_error;
+
 	if (error == NULL)
 		return ;
-    char *color_error = malloc(ft_strlen(RED) + ft_strlen(error) + ft_strlen(RESET) + 2); // +2 for newline and null terminator
-    if (color_error == NULL) {
-        write(2, "Memory allocation failed\n", 24);
-        exit(ERROR);
-    }
-    ft_strcpy(color_error, RED);
-    ft_strcat(color_error, error);
-    ft_strcat(color_error, RESET);
-    ft_strcat(color_error, "\n");
-    write(2, color_error, ft_strlen(color_error));
-    free(color_error);
-    // exit(ERROR);
+	color_error = malloc(ft_strlen(RED) + ft_strlen(error)
+			+ ft_strlen(RESET) + 2);// +2 for newline and null terminator
+	if (color_error == NULL)
+	{
+		write(2, "Memory allocation failed\n", 24);
+		exit(ERROR);
+	}
+	ft_strcpy(color_error, RED);
+	ft_strcat(color_error, error);
+	ft_strcat(color_error, RESET);
+	ft_strcat(color_error, "\n");
+	write(2, color_error, ft_strlen(color_error));
+	free(color_error);
+	// exit(ERROR);
 	//freeing memory here or after that function has been used
 }
 
-static int check_argc(int argc)
+static int	check_argc(int argc)
 {
 	if (argc > 2)
 	{
@@ -33,9 +48,11 @@ static int check_argc(int argc)
 	return (SUCCESS);
 }
 
-static int check_file_extension(char *filename)
+static int	check_file_extension(char *filename)
 {
-	char *extension = ft_strrchr(filename, '.');
+	char	*extension;
+
+	extension = ft_strrchr(filename, '.');
 	if (extension == NULL)
 	{
 		print_error("No file extension");
@@ -49,30 +66,26 @@ static int check_file_extension(char *filename)
 	return (SUCCESS);
 }
 
-static int check_file(char *filename)
+static int	check_file(char *filename)
 {
-    int fd = open(filename, O_RDONLY);
-    if (fd == -1)
-    {
-        if (errno == ENOENT)
-        {
-            print_error("File does not exist");
-        }
-        else if (errno == EACCES)
-        {
-            print_error("Permission denied");
-        }
-        else
-        {
-            print_error("An error occurred");
-        }
-        return (ERROR);
-    }
-    close(fd);
-    return (SUCCESS);
+	int	fd;
+
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+	{
+		if (errno == ENOENT)
+			print_error("File does not exist");
+		else if (errno == EACCES)
+			print_error("Permission denied");
+		else
+			print_error("An error occurred");
+		return (ERROR);
+	}
+	close(fd);
+	return (SUCCESS);
 }
 
-int check_for_valid_input(char **argv, int argc)
+int	check_for_valid_input(char **argv, int argc)
 {
 	if (check_argc(argc) == ERROR)
 		return (ERROR);
@@ -81,9 +94,4 @@ int check_for_valid_input(char **argv, int argc)
 	if (check_file(argv[1]) == ERROR)
 		return (ERROR);
 	return (SUCCESS);
-
 }
-
-
-
-
