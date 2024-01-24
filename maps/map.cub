@@ -2,6 +2,7 @@ NO ./textures/BRICK_1A.xpm
 SO ./textures/BRICK_2B.xpm
 WE ./textures/WOOD_1C.xpm
 EA ./textures/wall_east.xpm
+
 F 100,100,100
 C 0,170,219
 
@@ -24,12 +25,3 @@ C 0,170,219
   110111 1110101 10111101111
    11111 1111111 111111111111
                         11
-
-
-	  
-
-
-						       
-
-
-	
