@@ -1,13 +1,11 @@
 NO ./textures/BRICK_1A.xpm
 SO ./textures/BRICK_2B.xpm
 WE ./textures/WOOD_1C.xpm
-EA ./textures/wall_east.xpm
+EA ./textures/SLUDGE_1A.xpm
 
 F 100,100,100
 C 0,170,219
 
-
-1
 
         1111111111111111        
         11111 1 1011111111111111111111
