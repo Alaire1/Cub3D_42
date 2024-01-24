@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_input_validity.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:09:23 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/23 11:13:43 by narigi-e         ###   ########.fr       */
+/*   Updated: 2024/01/23 13:31:24 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	print_error(char *error)
 	if (error == NULL)
 		return ;
 	color_error = malloc(ft_strlen(RED) + ft_strlen(error)
-			+ ft_strlen(RESET) + 2);// +2 for newline and null terminator
+			+ ft_strlen(RESET) + 2);
 	if (color_error == NULL)
 	{
 		write(2, "Memory allocation failed\n", 24);
@@ -31,8 +31,6 @@ void	print_error(char *error)
 	ft_strcat(color_error, "\n");
 	write(2, color_error, ft_strlen(color_error));
 	free(color_error);
-	// exit(ERROR);
-	//freeing memory here or after that function has been used
 }
 
 static int	check_argc(int argc)

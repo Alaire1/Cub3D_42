@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:05:53 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/23 11:08:17 by narigi-e         ###   ########.fr       */
+/*   Updated: 2024/01/23 20:00:23 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	init_map(t_map *map)//ours
 	map->ce_color = -1;
 	map->fl_color = -1;
 	map->map = NULL;
-	map->height = 0;//need to add later
+	map->height = 0;
 	map->width = 0;
 	map->start_map_index = 0;
 	map->player_count = 0;

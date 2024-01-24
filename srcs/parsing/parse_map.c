@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:26:46 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/23 11:30:20 by narigi-e         ###   ########.fr       */
+/*   Updated: 2024/01/24 13:46:26 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ static int	map_valid_content(char *line, t_map *map)
 		if (check_player(line[i], map))
 			return (0);
 		if (line[i] != '0' && line[i] != '1'
-			&& line[i] != '2' && line[i] != 'N'
-			&& line[i] != 'S' && line[i] != 'W'
-			&& line[i] != 'E' && line[i] != ' ')
+			&& line[i] != 'N' && line[i] != 'S' 
+			&& line[i] != 'W' && line[i] != 'E' 
+			&& line[i] != ' ')
 		{
 			print_error("Invalid map content.");
 			return (0);
@@ -61,8 +61,7 @@ static int	only_spaces(char *line)
 	}
 	return (1);
 }
-
-static int	empty_line(char *line)
+int	empty_line(char *line)
 {
 	if (ft_strcmp(line, "\n") == 0)
 		return (1);
@@ -75,6 +74,39 @@ static int	empty_line(char *line)
 
 static int	get_map_size(t_map *map, int fd)
 {
+    char	*line;
+
+    while (1)
+    {
+        line = get_next_line(fd);
+        if (!line)
+            break ;
+        else if (empty_line(line) && map->height == 0 && map->width == 0)
+        {
+			map->start_map_index++;
+            free(line);
+            continue;
+        }
+        else if (*line && !empty_line(line))
+        {
+            if (map_valid_content(line, map) == 0)
+                return (free(line), 0);
+            map->height++;
+            if ((size_t)map->width < ft_strlen(line))
+                map->width = ft_strlen(line);
+        }
+		else
+			break ;
+        free(line);
+    }
+    if (line != NULL)
+        free(line);
+    return (1);
+}
+
+
+int check_after_map(int fd)
+{
 	char	*line;
 
 	while (1)
@@ -84,31 +116,23 @@ static int	get_map_size(t_map *map, int fd)
 			break ;
 		else if (empty_line(line))
 		{
-			map->start_map_index++;
-			if (map->height != 0 && map->width != 0)
-			{
-				free(line);
-				break ;
-			}
+			free(line);
+			continue;
 		}
-		if (*line)
-		{
-			if (map_valid_content(line, map) == 0)
-				return (free(line), 0);
-			map->height++;
-			if ((size_t)map->width < ft_strlen(line))
-				map->width = ft_strlen(line);
-		}
-		free(line);
+		else
+			return (free(line), 0);
 	}
 	return (1);
 }
 
 int	check_map_size(t_vars *info, int fd)
 {
-	if (get_map_size(&info->map, fd) == 0)
+	if (get_map_size(&info->map, fd) == 0 || check_after_map(fd) == 0)
+	{
+		print_error("Invalid map.");
 		return (0);
-	if (!info->map.width || !info->map.height)
+	}
+	if (info->map.width == 0 || info->map.height == 0)
 	{
 		print_error("Invalid map size.");
 		return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:46:39 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/23 12:22:10 by narigi-e         ###   ########.fr       */
+/*   Updated: 2024/01/23 15:48:30 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,7 @@ double	degree_to_radian(double degree);
 double	radian_calculations(double radian, double amout);
 
 /*************************[ Parsing ]*************************/
+int		empty_line(char *line);
 int		check_for_valid_input(char **argv, int argc); //my function
 void	print_error(char *error); //my function // needs to be taken to different file
 int		importing_map(t_vars *vars, char *file);
@@ -173,7 +174,7 @@ int		ft_get_textures(t_vars *vars, char **info);
 int		ft_component_surroundings(char **map, int i, int j);
 int		check_map_size(t_vars *info, int fd); //my function
 int		copy_map_to_info(t_vars *info, char *file); //my function
-int		check_walls(t_vars *info);
+int		check_walls(t_map *map);
 int		importing_map(t_vars *vars, char *file);
 
 /***************[ utils_1 ]***************/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   import_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:17:30 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/23 12:11:30 by narigi-e         ###   ########.fr       */
+/*   Updated: 2024/01/23 15:49:35 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,61 +224,150 @@
 // 	return (1);
 // }
 
-static int	check_walls_calcs(t_vars *info, int i, int j)
+// static int	check_walls_calcs(t_vars *info, int i, int j)
+// {
+// 	if (info->map.map[i][j] == '0')
+// 	{
+// 		if (i == 0 || i == info->map.height - 1
+// 			|| j == 0 || j == info->map.width - 1)
+// 		{
+// 			print_error("Map is not closed.\n");
+// 			return (0);
+// 		}
+// 		if (info->map.map[i - 1][j] == ' '
+// 			|| info->map.map[i + 1][j] == ' '
+// 			|| info->map.map[i][j - 1] == ' '
+// 			|| info->map.map[i][j + 1] == ' ')
+// 		{
+// 			print_error("Map is not closed.\n");
+// 			return (0);
+// 		}
+// 	}
+// 	return (1);
+// }
+
+// int	check_walls(t_vars *info)//seems to work but will do more tests
+// {
+// 	int	i;
+// 	int	j;
+
+// 	i = 0;
+// 	while (i < info->map.height)
+// 	{
+// 		j = 0;
+// 		while (j < info->map.width)
+// 		{
+// 			// if (info->map.map[i][j] == '0')
+// 			// {
+// 			// 	if (i == 0 || i == info->map.height - 1
+// 			// 		|| j == 0 || j == info->map.width - 1)
+// 			// 	{
+// 			// 		print_error("Map is not closed.\n");
+// 			// 		return (0);
+// 			// 	}
+// 			// 	if (info->map.map[i - 1][j] == ' '
+// 			// 		|| info->map.map[i + 1][j] == ' '
+// 			// 		|| info->map.map[i][j - 1] == ' '
+// 			// 		|| info->map.map[i][j + 1] == ' ')
+// 			// 	{
+// 			// 		print_error("Map is not closed.\n");
+// 			// 		return (0);
+// 			// 	}
+// 			// }
+// 			if (!check_walls_calcs(info, i, j))
+// 				return (0);
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// 	return (1);
+// }
+
+
+static int	ft_is_component_surrounded(char **map, int i, int j)
 {
-	if (info->map.map[i][j] == '0')
+	if (map[i][j + 1]
+		&& ft_strchr("0NSEW", map[i][j + 1]))
+		return (1);
+	else if (j - 1 >= 0
+		&& ft_strchr("0NSEW", map[i][j - 1]))
+		return (1);
+	else if (map[i + 1]
+		&& j < (int)ft_strlen(map[i + 1])
+		&& ft_strchr("0NSEW", map[i + 1][j]))
+		return (1);
+	else if (i - 1 >= 0
+		&& j < (int)ft_strlen(map[i - 1])
+		&& ft_strchr("0NSEW", map[i - 1][j]))
+		return (1);
+	return (0);
+}
+
+static int	ft_is_space_surrounded(char **map, int i, int j)
+{
+	if (!map[i][j + 1]
+		|| (map[i][j + 1]
+			&& map[i][j + 1] == SPACE))
+		return (1);
+	else if (j - 1 < 0
+		|| (j - 1 >= 0
+			&& map[i][j - 1] == SPACE))
+		return (1);
+	else if (!map[i + 1]
+		|| (map[i + 1]
+			&& j >= (int)ft_strlen(map[i + 1]))
+		|| (map[i + 1]
+			&& j < (int)ft_strlen(map[i + 1])
+			&& map[i + 1][j] == SPACE))
+		return (1);
+	else if (i - 1 < 0
+		|| (i - 1 >= 0
+			&& j >= (int)ft_strlen(map[i - 1]))
+		|| (i - 1 >= 0
+			&& j < (int)ft_strlen(map[i - 1])
+			&& map[i - 1][j] == SPACE))
+		return (1);
+	return (0);
+}
+
+int	ft_component_surroundings(char **map, int i, int j)
+{
+	if (map[i][j] == SPACE && ft_is_component_surrounded(map, i, j))
+		return (print_error("Invalid map: misplaced space."), 0);
+	else if (ft_strchr("0NSEW", map[i][j]))
 	{
-		if (i == 0 || i == info->map.height - 1
-			|| j == 0 || j == info->map.width - 1)
+		if (ft_is_space_surrounded(map, i, j))
 		{
-			print_error("Map is not closed.\n");
-			return (0);
-		}
-		if (info->map.map[i - 1][j] == ' '
-			|| info->map.map[i + 1][j] == ' '
-			|| info->map.map[i][j - 1] == ' '
-			|| info->map.map[i][j + 1] == ' ')
-		{
-			print_error("Map is not closed.\n");
+			if (map[i][j] == EMPTY_SPACE)
+				print_error("Invalid map: misplaced empty space.");
+			else
+				print_error("Invalid map: misplaced player position.");
 			return (0);
 		}
 	}
 	return (1);
 }
 
-int	check_walls(t_vars *info)//seems to work but will do more tests
+
+int	check_walls(t_map *map)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < info->map.height)
+	while (i < map->height)
 	{
 		j = 0;
-		while (j < info->map.width)
+		while (map->map[i][j] != '\0')
 		{
-			// if (info->map.map[i][j] == '0')
-			// {
-			// 	if (i == 0 || i == info->map.height - 1
-			// 		|| j == 0 || j == info->map.width - 1)
-			// 	{
-			// 		print_error("Map is not closed.\n");
-			// 		return (0);
-			// 	}
-			// 	if (info->map.map[i - 1][j] == ' '
-			// 		|| info->map.map[i + 1][j] == ' '
-			// 		|| info->map.map[i][j - 1] == ' '
-			// 		|| info->map.map[i][j + 1] == ' ')
-			// 	{
-			// 		print_error("Map is not closed.\n");
-			// 		return (0);
-			// 	}
-			// }
-			if (!check_walls_calcs(info, i, j))
-				return (0);
-			j++;
+			if (ft_strchr(" 0NSEW", map->map[i][j]))
+			{
+				if (!ft_component_surroundings(map->map, i, j))
+					return (0);
+			}
+			j ++;
 		}
-		i++;
+		i ++;
 	}
 	return (1);
 }
@@ -301,7 +390,7 @@ int	importing_map(t_vars *vars, char *file)
 	close(fd);
 	if (!copy_map_to_info(vars, file))
 		return (0);
-	if (check_walls(vars) == 0)
+	if (check_walls(&vars->map) == 0)
 		return (0);
 	getting_player_position(vars);
 	return (1);
