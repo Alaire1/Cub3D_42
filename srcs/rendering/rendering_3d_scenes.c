@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_3d_scenes.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:41:36 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/22 12:41:49 by narigi-e         ###   ########.fr       */
+/*   Updated: 2024/01/24 16:30:08 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	getting_texture_pixel(t_img img, t_render *render, int ty)
 	return (img.data[abs(ty) * img.width + abs(tx)]);
 }
 
-static void	drawing_pixel(t_vars *vars, t_render *render, int *data, int ty)
+static void	drawing_pixel(t_main *vars, t_render *render, int *data, int ty)
 {
 	t_img	*img;
 	int		color;
@@ -51,7 +51,7 @@ static void	drawing_pixel(t_vars *vars, t_render *render, int *data, int ty)
 		*data = color;
 }
 
-static void	drawing_walls(t_vars *vars, t_render *render)
+static void	drawing_walls(t_main *vars, t_render *render)
 {
 	int	x;
 	int	y;
@@ -75,7 +75,7 @@ static void	drawing_walls(t_vars *vars, t_render *render)
 	}
 }
 
-static void	getting_walls_dimensions(t_vars *vars, t_render *render,
+static void	getting_walls_dimensions(t_main *vars, t_render *render,
 	t_coor start_pos, double degree)
 {
 	render->degree = degree;
@@ -92,7 +92,7 @@ static void	getting_walls_dimensions(t_vars *vars, t_render *render,
 		render->wall_dim.height = HEIGHT;
 }
 
-void	rendering_3d_scenes(t_vars *vars)
+void	rendering_3d_scenes(t_main *vars)
 {
 	t_render	render;
 	double		degree;

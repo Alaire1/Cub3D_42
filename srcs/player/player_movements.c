@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   player_movements.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:40:38 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/22 12:40:42 by narigi-e         ###   ########.fr       */
+/*   Updated: 2024/01/24 16:29:32 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static void	getting_player_direction(t_vars *vars)
+static void	getting_player_direction(t_main *vars)
 {
 	double	direction_angle;
 
@@ -32,7 +32,7 @@ static void	getting_player_direction(t_vars *vars)
 	vars->player.dir.y = sin(direction_angle);
 }
 
-void	moving_player(t_vars *vars)
+void	moving_player(t_main *vars)
 {
 	t_coor	new_pos;
 
@@ -49,7 +49,7 @@ void	moving_player(t_vars *vars)
 		vars->player.pos.y = new_pos.y;
 }
 
-int	pressing_keys(int keycode, t_vars *vars)
+int	pressing_keys(int keycode, t_main *vars)
 {
 	if (keycode == KEY_A)
 		vars->player.move.x = -1;
@@ -68,7 +68,7 @@ int	pressing_keys(int keycode, t_vars *vars)
 	return (0);
 }
 
-int	key_release(int keycode, t_vars *vars)
+int	key_release(int keycode, t_main *vars)
 {
 	if (keycode == KEY_A)
 		vars->player.move.x = 0;

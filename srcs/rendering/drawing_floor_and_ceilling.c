@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   drawing_floor_and_ceilling.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:41:12 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/22 12:41:16 by narigi-e         ###   ########.fr       */
+/*   Updated: 2024/01/24 16:29:43 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	drawing_floor_and_ceilling(t_vars *vars)
+void	drawing_floor_and_ceilling(t_main *vars)
 {
 	int	x;
 	int	y;

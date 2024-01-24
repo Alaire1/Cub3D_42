@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   getting_player_position.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:40:24 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/22 12:40:30 by narigi-e         ###   ########.fr       */
+/*   Updated: 2024/01/24 16:29:26 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static void	getting_player_angle(t_vars *vars)
+static void	getting_player_angle(t_main *vars)
 {
 	int		x;
 	int		y;
@@ -29,7 +29,7 @@ static void	getting_player_angle(t_vars *vars)
 		vars->player.angle = 0;
 }
 
-void	getting_player_position(t_vars *vars)
+void	getting_player_position(t_main *vars)
 {
 	int	i;
 	int	j;

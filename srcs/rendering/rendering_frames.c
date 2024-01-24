@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rendering_frames.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:42:35 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/22 13:00:37 by narigi-e         ###   ########.fr       */
+/*   Updated: 2024/01/24 16:30:17 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	initializing_images(t_vars *vars)
+int	initializing_images(t_main *vars)
 {
 	vars->mlx.img.img = mlx_new_image(vars->mlx.mlx, WIDTH, HEIGHT);
 	if (!vars->mlx.img.img)
@@ -23,7 +23,7 @@ int	initializing_images(t_vars *vars)
 	return (1);
 }
 
-static void	counting_fps(t_vars *vars)
+static void	counting_fps(t_main *vars)
 {
 	static long	prev_timestamp;
 	static long	counter;
@@ -44,7 +44,7 @@ static void	counting_fps(t_vars *vars)
 	frames ++;
 }
 
-int	rendering_frames(t_vars *vars)
+int	rendering_frames(t_main *vars)
 {
 	counting_fps(vars);
 	moving_player(vars);

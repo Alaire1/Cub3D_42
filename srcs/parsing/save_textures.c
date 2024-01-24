@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_3.c                                          :+:      :+:    :+:   */
+/*   save_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:51:35 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/23 11:58:54 by narigi-e         ###   ########.fr       */
+/*   Updated: 2024/01/24 19:31:08 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ int	get_color_rgb(int *color, char **info)
 	ft_free_array(arr);
 	if (!validate_rgb_range(rgb))
 		return (0);
-	*color = trgb_to_int(0, rgb[0], rgb[1], rgb[2]); // may be changed to just rgb
+	*color = trgb_to_int(0, rgb[0], rgb[1], rgb[2]);
 	return (1);
 }
 
-int	get_image(t_vars *info, t_img *img, char *path)
+int	get_image(t_main *info, t_img *img, char *path)
 {
 	img->img = mlx_xpm_file_to_image(info->mlx.mlx, path,
 			&img->width, &img->height);
@@ -67,7 +67,7 @@ int	get_image(t_vars *info, t_img *img, char *path)
 	return (1);
 }
 
-int	save_textures(t_vars *info, char **arr)
+int	save_textures(t_main *info, char **arr)
 {
 	int	error_flag;
 
@@ -81,7 +81,7 @@ int	save_textures(t_vars *info, char **arr)
 	else if (!ft_strcmp(arr[0], "EA"))
 		error_flag = get_image(info, &info->map.east, arr[1]);
 	else if (!ft_strcmp(arr[0], "F"))
-		error_flag = get_color_rgb(&info->map.fl_color, arr); //not written yet
+		error_flag = get_color_rgb(&info->map.fl_color, arr);
 	else if (!ft_strcmp(arr[0], "C"))
 		error_flag = get_color_rgb(&info->map.ce_color, arr);
 	return (error_flag);

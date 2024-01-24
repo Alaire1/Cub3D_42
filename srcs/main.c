@@ -6,57 +6,19 @@
 /*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:05:53 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/23 20:00:23 by akaraban         ###   ########.fr       */
+/*   Updated: 2024/01/24 16:40:58 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	exit_game(t_vars *vars)
+int	exit_game(t_main *vars)
 {
 	exiting_game(vars, EXIT_SUCCESS);
 	return (EXIT_SUCCESS);
 }
 
-void	init_map(t_map *map)//ours
-{
-	map->ce_color = -1;
-	map->fl_color = -1;
-	map->map = NULL;
-	map->height = 0;
-	map->width = 0;
-	map->start_map_index = 0;
-	map->player_count = 0;
-	map->north.img = NULL;
-	map->south.img = NULL;
-	map->west.img = NULL;
-	map->east.img = NULL;
-}
-
-static void	init_mlx(t_mlx *mlx) // ours
-{
-	mlx->win = NULL;
-	mlx->img.img = NULL;
-	mlx->fps = 0;
-	mlx->mlx = mlx_init();
-	if (!mlx->mlx)
-		print_error("mlx_init() failed");
-}
-
-static void	init_player(t_player *player)// ours
-{
-	player->move.x = 0;
-	player->move.y = 0;
-	player->rotate = 0;
-}
-
-static void	init_main_struct(t_vars *info)// ours
-{
-	init_map(&info->map);
-	init_mlx(&info->mlx);
-}
-
-static void	starting_game(t_vars *vars)
+static void	start(t_main *vars)
 {
 	vars->mlx.win = mlx_new_window(vars->mlx.mlx, WIDTH, HEIGHT, "cub3d");
 	if (!vars->mlx.win)
@@ -74,7 +36,7 @@ static void	starting_game(t_vars *vars)
 
 int	main(int argc, char **argv)
 {
-	t_vars	info;
+	t_main	info;
 
 	check_for_valid_input(argv, argc);
 	init_main_struct(&info);
@@ -82,6 +44,6 @@ int	main(int argc, char **argv)
 		exiting_game(&info, EXIT_FAILURE);
 	if (!initializing_images(&info))
 		exiting_game(&info, EXIT_FAILURE);
-	starting_game(&info);
+	start(&info);
 	return (EXIT_SUCCESS);
 }

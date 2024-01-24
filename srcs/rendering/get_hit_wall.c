@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_hit_wall.c                                  :+:      :+:    :+:   */
+/*   get_hit_wall.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:41:24 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/22 12:42:32 by narigi-e         ###   ########.fr       */
+/*   Updated: 2024/01/24 16:29:58 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static t_coor	ft_intersec_x(t_coor pos, double angle)
 	return (tmp);
 }
 
-static t_coor	get_intersect_pt(t_vars *vars, t_coor start_pos,
+static t_coor	get_intersect_pt(t_main *vars, t_coor start_pos,
 	double angle, t_coor (*interfunc)(t_coor, double))
 {
 	int		map_height;
@@ -63,7 +63,7 @@ static t_coor	get_intersect_pt(t_vars *vars, t_coor start_pos,
 	return (first_inter);
 }
 
-t_coor	ft_get_hit_wall(t_vars *vars, t_coor start_pos,
+t_coor	ft_get_hit_wall(t_main *vars, t_coor start_pos,
 	double angle, int *direction)
 {
 	t_coor	x_wall;

@@ -20,11 +20,14 @@ FILES			=	utils/getting_current_time.c\
 					utils/radian_calculations.c\
 					parsing/check_input_validity.c \
 					parsing/copy_map_info.c\
-					parsing/parse_map.c\
+					parsing/get_map_size.c\
 					parsing/import_map.c \
+					parsing/init_structs.c \
+					parsing/parse_map.c \
+					parsing/read_textures.c \
+					parsing/save_textures.c \
 					parsing/utils_1.c \
 					parsing/utils_2.c \
-					parsing/utils_3.c \
 					player/getting_player_position.c\
 					player/player_movements.c\
 					rendering/get_hit_wall.c\

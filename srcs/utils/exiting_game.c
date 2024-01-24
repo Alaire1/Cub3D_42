@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   exiting_game.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: narigi-e <narigi-e@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:43:07 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/22 12:43:09 by narigi-e         ###   ########.fr       */
+/*   Updated: 2024/01/24 16:30:29 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static void	destroying_image(t_vars *vars, t_img *img)
+static void	destroying_image(t_main *vars, t_img *img)
 {
 	if (img->img)
 		mlx_destroy_image(vars->mlx.mlx, img->img);
 }
 
-int	exiting_game(t_vars *vars, int exit_status)
+int	exiting_game(t_main *vars, int exit_status)
 {
 	if (vars->mlx.win)
 		mlx_destroy_window(vars->mlx.mlx, vars->mlx.win);
