@@ -6,7 +6,7 @@
 /*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:41:36 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/24 16:30:08 by akaraban         ###   ########.fr       */
+/*   Updated: 2024/01/25 12:41:06 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,26 +32,26 @@ static int	getting_texture_pixel(t_img img, t_render *render, int ty)
 	return (img.data[abs(ty) * img.width + abs(tx)]);
 }
 
-static void	drawing_pixel(t_main *vars, t_render *render, int *data, int ty)
+static void	drawing_pixel(t_main *info, t_render *render, int *data, int ty)
 {
 	t_img	*img;
 	int		color;
 
 	if (render->direc == 'h' && render->angle < M_PI)
-		img = &vars->map.north;
+		img = &info->map.north;
 	else if (render->direc == 'h' && render->angle < 2 * M_PI)
-		img = &vars->map.south;
+		img = &info->map.south;
 	else if (render->direc == 'v'
 		&& (render->angle < M_PI_2 || render->angle > M_PI + M_PI_2))
-		img = &vars->map.west;
+		img = &info->map.west;
 	else
-		img = &vars->map.east;
+		img = &info->map.east;
 	color = getting_texture_pixel(*img, render, ty);
 	if (color != trgb_to_int(255, 0, 0, 0))
 		*data = color;
 }
 
-static void	drawing_walls(t_main *vars, t_render *render)
+static void	drawing_walls(t_main *info, t_render *render)
 {
 	int	x;
 	int	y;
@@ -66,8 +66,8 @@ static void	drawing_walls(t_main *vars, t_render *render)
 		while (x < ((render->degree / RADIAN_INC) * render->wall_dim.width)
 			+ render->wall_dim.width && x < WIDTH)
 		{
-			drawing_pixel(vars, render,
-				&vars->mlx.img.data[y * WIDTH + x], ty - 1);
+			drawing_pixel(info, render,
+				&info->mlx.img.data[y * WIDTH + x], ty - 1);
 			x ++;
 		}
 		ty ++;
@@ -75,14 +75,14 @@ static void	drawing_walls(t_main *vars, t_render *render)
 	}
 }
 
-static void	getting_walls_dimensions(t_main *vars, t_render *render,
+static void	getting_walls_dimensions(t_main *info, t_render *render,
 	t_coor start_pos, double degree)
 {
 	render->degree = degree;
-	render->hit_wall = ft_get_hit_wall(vars, start_pos,
+	render->hit_wall = ft_get_hit_wall(info, start_pos,
 			render->angle, &render->direc);
-	render->dist = getting_distance(vars->player.pos, render->hit_wall)
-		* cos(radian_calculations(vars->player.angle, -render->angle));
+	render->dist = getting_distance(info->player.pos, render->hit_wall)
+		* cos(radian_calculations(info->player.angle, -render->angle));
 	render->wall_dim.width = WIDTH / (FOV / RADIAN_INC);
 	render->wall_dim.height = HEIGHT;
 	if (render->dist > 0)
@@ -92,19 +92,19 @@ static void	getting_walls_dimensions(t_main *vars, t_render *render,
 		render->wall_dim.height = HEIGHT;
 }
 
-void	rendering_3d_scenes(t_main *vars)
+void	rendering_3d_scenes(t_main *info)
 {
 	t_render	render;
 	double		degree;
 
-	drawing_floor_and_ceilling(vars);
+	drawing_floor_and_ceilling(info);
 	degree = 0;
 	while (degree <= FOV)
 	{
-		render.angle = radian_calculations(vars->player.angle,
+		render.angle = radian_calculations(info->player.angle,
 				degree_to_radian(degree - (FOV / 2)));
-		getting_walls_dimensions(vars, &render, vars->player.pos, degree);
-		drawing_walls(vars, &render);
+		getting_walls_dimensions(info, &render, info->player.pos, degree);
+		drawing_walls(info, &render);
 		degree += RADIAN_INC;
 	}
 }

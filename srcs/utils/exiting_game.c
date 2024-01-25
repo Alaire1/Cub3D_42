@@ -6,27 +6,27 @@
 /*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:43:07 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/24 16:30:29 by akaraban         ###   ########.fr       */
+/*   Updated: 2024/01/25 12:41:32 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static void	destroying_image(t_main *vars, t_img *img)
+static void	destroying_image(t_main *info, t_img *img)
 {
 	if (img->img)
-		mlx_destroy_image(vars->mlx.mlx, img->img);
+		mlx_destroy_image(info->mlx.mlx, img->img);
 }
 
-int	exiting_game(t_main *vars, int exit_status)
+int	exiting_game(t_main *info, int exit_status)
 {
-	if (vars->mlx.win)
-		mlx_destroy_window(vars->mlx.mlx, vars->mlx.win);
-	destroying_image(vars, &vars->mlx.img);
-	destroying_image(vars, &vars->map.north);
-	destroying_image(vars, &vars->map.south);
-	destroying_image(vars, &vars->map.west);
-	destroying_image(vars, &vars->map.east);
-	vars->map.map = ft_free_2d(vars->map.map);
+	if (info->mlx.win)
+		mlx_destroy_window(info->mlx.mlx, info->mlx.win);
+	destroying_image(info, &info->mlx.img);
+	destroying_image(info, &info->map.north);
+	destroying_image(info, &info->map.south);
+	destroying_image(info, &info->map.west);
+	destroying_image(info, &info->map.east);
+	info->map.map = ft_free_2d(info->map.map);
 	exit(exit_status);
 }

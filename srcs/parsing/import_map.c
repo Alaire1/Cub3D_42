@@ -6,7 +6,7 @@
 /*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:17:30 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/24 19:51:53 by akaraban         ###   ########.fr       */
+/*   Updated: 2024/01/25 12:40:03 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,20 +89,20 @@ int	map_check_validity(t_map *map)
 	return (1);
 }
 
-int	importing_map(t_main *vars, char *file)
+int	importing_map(t_main *info, char *file)
 {
 	int	fd;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return (print_error("Couldn't open file.\n"), 0);
-	if (!read_textures(vars, fd) || !check_map_size(vars, fd))
+	if (!read_textures(info, fd) || !check_map_size(info, fd))
 		return (close(fd), 0);
 	close(fd);
-	if (!copy_map_to_info(vars, file))
+	if (!copy_map_to_info(info, file))
 		return (0);
-	if (map_check_validity(&vars->map) == 0)
+	if (map_check_validity(&info->map) == 0)
 		return (0);
-	getting_player_position(vars);
+	getting_player_position(info);
 	return (1);
 }

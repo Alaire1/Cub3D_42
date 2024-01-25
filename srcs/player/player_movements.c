@@ -6,81 +6,81 @@
 /*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:40:38 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/24 16:29:32 by akaraban         ###   ########.fr       */
+/*   Updated: 2024/01/25 12:40:48 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static void	getting_player_direction(t_main *vars)
+static void	getting_player_direction(t_main *info)
 {
 	double	direction_angle;
 
-	if (vars->player.rotate)
-		vars->player.angle = radian_calculations(vars->player.angle,
-				vars->player.rotate * vars->mlx.fspeed * ROT_SPEED);
-	direction_angle = vars->player.angle;
-	if (vars->player.move.y == -1)
+	if (info->player.rotate)
+		info->player.angle = radian_calculations(info->player.angle,
+				info->player.rotate * info->mlx.fspeed * ROT_SPEED);
+	direction_angle = info->player.angle;
+	if (info->player.move.y == -1)
 		direction_angle = radian_calculations(direction_angle, M_PI);
-	else if (vars->player.move.x)
+	else if (info->player.move.x)
 		direction_angle = radian_calculations(direction_angle,
-				-vars->player.move.x * M_PI_2);
-	if (vars->player.move.x && vars->player.move.y)
+				-info->player.move.x * M_PI_2);
+	if (info->player.move.x && info->player.move.y)
 		direction_angle = radian_calculations(direction_angle,
-				vars->player.move.x * M_PI_4);
-	vars->player.dir.x = cos(direction_angle);
-	vars->player.dir.y = sin(direction_angle);
+				info->player.move.x * M_PI_4);
+	info->player.dir.x = cos(direction_angle);
+	info->player.dir.y = sin(direction_angle);
 }
 
-void	moving_player(t_main *vars)
+void	moving_player(t_main *info)
 {
 	t_coor	new_pos;
 
-	getting_player_direction(vars);
-	if (!(int)vars->player.move.x && !(int)vars->player.move.y)
+	getting_player_direction(info);
+	if (!(int)info->player.move.x && !(int)info->player.move.y)
 		return ;
-	new_pos.x = vars->player.pos.x
-		+ (vars->player.dir.x * vars->mlx.fspeed * SPEED);
-	if (vars->map.map[(int)vars->player.pos.y][(int)new_pos.x] != '1')
-		vars->player.pos.x = new_pos.x;
-	new_pos.y = vars->player.pos.y
-		+ (vars->player.dir.y * vars->mlx.fspeed * SPEED);
-	if (vars->map.map[(int)new_pos.y][(int)vars->player.pos.x] != '1')
-		vars->player.pos.y = new_pos.y;
+	new_pos.x = info->player.pos.x
+		+ (info->player.dir.x * info->mlx.fspeed * SPEED);
+	if (info->map.map[(int)info->player.pos.y][(int)new_pos.x] != '1')
+		info->player.pos.x = new_pos.x;
+	new_pos.y = info->player.pos.y
+		+ (info->player.dir.y * info->mlx.fspeed * SPEED);
+	if (info->map.map[(int)new_pos.y][(int)info->player.pos.x] != '1')
+		info->player.pos.y = new_pos.y;
 }
 
-int	pressing_keys(int keycode, t_main *vars)
+int	pressing_keys(int keycode, t_main *info)
 {
 	if (keycode == KEY_A)
-		vars->player.move.x = -1;
+		info->player.move.x = -1;
 	else if (keycode == KEY_W || keycode == KEY_UP)
-		vars->player.move.y = -1;
+		info->player.move.y = -1;
 	else if (keycode == KEY_D)
-		vars->player.move.x = 1;
+		info->player.move.x = 1;
 	else if (keycode == KEY_S || keycode == KEY_DOWN)
-		vars->player.move.y = 1;
+		info->player.move.y = 1;
 	else if (keycode == KEY_LEFT)
-		vars->player.rotate = -1;
+		info->player.rotate = -1;
 	else if (keycode == KEY_RIGHT)
-		vars->player.rotate = 1;
+		info->player.rotate = 1;
 	else if (keycode == KEY_ESC)
-		exiting_game(vars, EXIT_SUCCESS);
+		exiting_game(info, EXIT_SUCCESS);
 	return (0);
 }
 
-int	key_release(int keycode, t_main *vars)
+int	key_release(int keycode, t_main *info)
 {
 	if (keycode == KEY_A)
-		vars->player.move.x = 0;
+		info->player.move.x = 0;
 	else if (keycode == KEY_W || keycode == KEY_UP)
-		vars->player.move.y = 0;
+		info->player.move.y = 0;
 	else if (keycode == KEY_D)
-		vars->player.move.x = 0;
+		info->player.move.x = 0;
 	else if (keycode == KEY_S || keycode == KEY_DOWN)
-		vars->player.move.y = 0;
+		info->player.move.y = 0;
 	else if (keycode == KEY_LEFT)
-		vars->player.rotate = 0;
+		info->player.rotate = 0;
 	else if (keycode == KEY_RIGHT)
-		vars->player.rotate = 0;
+		info->player.rotate = 0;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:05:53 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/25 12:27:10 by akaraban         ###   ########.fr       */
+/*   Updated: 2024/01/25 12:38:51 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	exit_game(t_main *info)
 
 static void create_window(t_main *info)
 {
-    info->mlx.win = mlx_new_window(info->mlx.mlx, WIDTH, HEIGHT, "cub3d");
+    info->mlx.win = mlx_new_window(info->mlx.mlx, WIDTH, HEIGHT, NAME);
     if (!info->mlx.win)
     {
         print_error("Couldn't open window.");

@@ -6,7 +6,7 @@
 /*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:46:39 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/24 20:05:01 by akaraban         ###   ########.fr       */
+/*   Updated: 2024/01/25 12:38:45 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include "../Libft/libft.h"
 # include "../mlx/mlx.h"
 
+#define NAME "Cub3D"
+
 # define USAGE			"Usage: ./cub3d <file.cub>"
 # define RADIAN_INC		0.06
 
@@ -36,8 +38,6 @@
 # define SPACE			' '
 # define EMPTY_SPACE	'0'
 # define WALL			'1'
-# define C_DOOR			'2'
-# define O_DOOR			'3'
 # define P_NORTH		'N'
 # define P_SOUTH		'S'
 # define P_EAST			'E'

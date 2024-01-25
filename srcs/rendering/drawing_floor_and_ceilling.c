@@ -6,13 +6,13 @@
 /*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:41:12 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/24 16:29:43 by akaraban         ###   ########.fr       */
+/*   Updated: 2024/01/25 12:40:54 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	drawing_floor_and_ceilling(t_main *vars)
+void	drawing_floor_and_ceilling(t_main *info)
 {
 	int	x;
 	int	y;
@@ -24,9 +24,9 @@ void	drawing_floor_and_ceilling(t_main *vars)
 		while (x < WIDTH)
 		{
 			if (y < HEIGHT / 2)
-				vars->mlx.img.data[y * WIDTH + x] = vars->map.ce_color;
+				info->mlx.img.data[y * WIDTH + x] = info->map.ce_color;
 			else
-				vars->mlx.img.data[y * WIDTH + x] = vars->map.fl_color;
+				info->mlx.img.data[y * WIDTH + x] = info->map.fl_color;
 			x ++;
 		}
 		y ++;
