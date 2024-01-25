@@ -6,32 +6,42 @@
 /*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:05:53 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/24 16:40:58 by akaraban         ###   ########.fr       */
+/*   Updated: 2024/01/25 12:27:10 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	exit_game(t_main *vars)
+int	exit_game(t_main *info)
 {
-	exiting_game(vars, EXIT_SUCCESS);
+	exiting_game(info, EXIT_SUCCESS);
 	return (EXIT_SUCCESS);
 }
 
-static void	start(t_main *vars)
+static void create_window(t_main *info)
 {
-	vars->mlx.win = mlx_new_window(vars->mlx.mlx, WIDTH, HEIGHT, "cub3d");
-	if (!vars->mlx.win)
-	{
-		printf("Error\nCouldn't open window.\n");
-		exiting_game(vars, EXIT_FAILURE);
-	}
-	init_player(&vars->player);
-	mlx_hook(vars->mlx.win, 02, (1L << 0), pressing_keys, vars);
-	mlx_hook(vars->mlx.win, 03, (1L << 1), key_release, vars);
-	mlx_hook(vars->mlx.win, 17, 0L, exit_game, vars);
-	mlx_loop_hook(vars->mlx.mlx, rendering_frames, vars);
-	mlx_loop(vars->mlx.mlx);
+    info->mlx.win = mlx_new_window(info->mlx.mlx, WIDTH, HEIGHT, "cub3d");
+    if (!info->mlx.win)
+    {
+        print_error("Couldn't open window.");
+        exiting_game(info, EXIT_FAILURE);
+    }
+}
+
+static void set_hooks(t_main *info)
+{
+    mlx_hook(info->mlx.win, 02, (1L << 0), pressing_keys, info);
+    mlx_hook(info->mlx.win, 03, (1L << 1), key_release, info);
+    mlx_hook(info->mlx.win, 17, 0L, exit_game, info);
+    mlx_loop_hook(info->mlx.mlx, rendering_frames, info);
+}
+
+static void start(t_main *info)
+{
+    create_window(info);
+    init_player(&info->player);
+    set_hooks(info);
+    mlx_loop(info->mlx.mlx);
 }
 
 int	main(int argc, char **argv)

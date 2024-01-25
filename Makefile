@@ -42,12 +42,16 @@ SRCS			=	$(addprefix $(SRCS_DIR), $(FILES))
 OBJS_DIR		=	objs/
 OBJS			=	$(patsubst %.c, %.o, $(addprefix $(OBJS_DIR), $(FILES)))
 
+GREEN = \033[0;32m
+RESET = \033[0m
+
 $(OBJS_DIR)%.o:$(SRCS_DIR)%.c				$(HEADER)
 	@mkdir -p $(shell dirname $@)
 	@$(CC) $(CFLAGS) $(LIBFT_IFLAGS) $(MLX_IFLAGS) -c $< -o $@
 
 $(NAME):	$(HEADER) $(OBJS) $(LIBFT) $(MLX)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) $(MLX_LFLAGS) -o $(NAME)
+	@echo "$(GREEN)$(NAME) has been created.$(RESET)"
 
 all:	$(NAME)
 
@@ -62,10 +66,13 @@ $(MLX):
 clean:
 	@rm -rf $(OBJS_DIR)
 	@make clean -C $(LIBFT_DIR)
+	@make clean -C $(MLX_DIR)
+	@echo "$(GREEN)$(NAME) objects have been deleted.$(RESET)"
 
 fclean:	clean
 	@rm -rf $(NAME)
 	@make fclean -C $(LIBFT_DIR)
 	@make clean -C $(MLX_DIR)
+	@echo "$(GREEN)$(NAME) has been deleted.$(RESET)"
 
 re:		fclean all

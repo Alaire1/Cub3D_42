@@ -1,8 +1,12 @@
+
+NAME			=	libft.a
+
 INCDIR			=	.
 HEADER			=	libft.h
-NAME			=	libft.a
+
 SRCS			=	$(wildcard *.c)
 OBJS			=	$(patsubst %.c,%.o,$(SRCS))
+
 GCC				=	cc
 CFLAGS			=	-Wall -Wextra -Werror
 RM				=	rm -f
@@ -10,18 +14,18 @@ RM				=	rm -f
 all:			$(NAME)
 
 .c.o:
-				$(GCC) $(CFLAGS) -I$(INCDIR) -c $< -o $(<:.c=.o)
+	@$(GCC) $(CFLAGS) -I$(INCDIR) -c $< -o $(<:.c=.o)
 
 $(NAME):		$(OBJS) $(HEADER)
-				ar rc $@ $^
-				ranlib $@
+	@ar rc $@ $^
+	@ranlib $@
 
 .PHONY:			all clean fclean re
 
 clean:
-				$(RM) $(OBJS)
+	@$(RM) $(OBJS)
 			
 fclean:			clean
-				$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re:				fclean all
