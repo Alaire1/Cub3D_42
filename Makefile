@@ -52,6 +52,7 @@ $(OBJS_DIR)%.o:$(SRCS_DIR)%.c				$(HEADER)
 $(NAME):	$(HEADER) $(OBJS) $(LIBFT) $(MLX)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) $(MLX_LFLAGS) -o $(NAME)
 	@echo "$(GREEN)$(NAME) has been created.$(RESET)"
+	@echo "$(GREEN)Usage: ./cub3d <map file> $(RESET)"
 
 all:	$(NAME)
 

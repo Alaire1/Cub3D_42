@@ -6,7 +6,7 @@
 /*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:42:35 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/25 12:41:26 by akaraban         ###   ########.fr       */
+/*   Updated: 2024/01/25 13:19:29 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	initializing_images(t_main *info)
 {
 	info->mlx.img.img = mlx_new_image(info->mlx.mlx, WIDTH, HEIGHT);
 	if (!info->mlx.img.img)
-		return (printf("Error\nCouldn't create images.\n"), 0);
+		return (print_error("Couldn't create images."), 0);
 	info->mlx.img.data = (int *)mlx_get_data_addr(info->mlx.img.img,
 			&info->mlx.img.bpp, &info->mlx.img.line_len,
 			&info->mlx.img.endian);

@@ -6,7 +6,7 @@
 /*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:46:39 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/25 13:08:48 by akaraban         ###   ########.fr       */
+/*   Updated: 2024/01/25 13:16:04 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 
 #define NAME "Cub3D"
 
-# define USAGE			"Usage: ./cub3d <file.cub>"
 # define RADIAN_INC		0.06
 
 # define RED 			"\x1B[0;31m"
