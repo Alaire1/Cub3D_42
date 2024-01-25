@@ -6,7 +6,7 @@
 /*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:05:53 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/25 12:38:51 by akaraban         ###   ########.fr       */
+/*   Updated: 2024/01/25 13:13:15 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	exit_game(t_main *info)
 {
-	exiting_game(info, EXIT_SUCCESS);
-	return (EXIT_SUCCESS);
+	exiting_game(info, SUCCESS);
+	return (SUCCESS);
 }
 
 static void create_window(t_main *info)
@@ -24,7 +24,7 @@ static void create_window(t_main *info)
     if (!info->mlx.win)
     {
         print_error("Couldn't open window.");
-        exiting_game(info, EXIT_FAILURE);
+        exiting_game(info, ERROR);
     }
 }
 
@@ -51,9 +51,9 @@ int	main(int argc, char **argv)
 	check_for_valid_input(argv, argc);
 	init_main_struct(&info);
 	if (!importing_map(&info, argv[1]))
-		exiting_game(&info, EXIT_FAILURE);
+		exiting_game(&info, ERROR);
 	if (!initializing_images(&info))
-		exiting_game(&info, EXIT_FAILURE);
+		exiting_game(&info, ERROR);
 	start(&info);
-	return (EXIT_SUCCESS);
+	return (ERROR);
 }
