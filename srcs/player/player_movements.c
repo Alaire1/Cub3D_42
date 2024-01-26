@@ -6,7 +6,7 @@
 /*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:40:38 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/25 15:30:27 by akaraban         ###   ########.fr       */
+/*   Updated: 2024/01/26 16:26:18 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	getting_player_direction(t_main *info)
 {
 	double	direction_angle;
 
+	printf("angle: %f\n", info->player.angle);
 	if (info->player.rotate)
 		info->player.angle = radian_calculations(info->player.angle,
 				info->player.rotate * info->mlx.fspeed * ROT_SPEED);

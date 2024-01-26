@@ -6,7 +6,7 @@
 /*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:46:39 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/26 13:32:13 by akaraban         ###   ########.fr       */
+/*   Updated: 2024/01/26 16:16:29 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ enum e_player
 {
 	SPEED = 4,
 	ROT_SPEED = 3,
-	MOUSE_ROT_SPEED = 5,
 	FOV	= 75
 };
 
