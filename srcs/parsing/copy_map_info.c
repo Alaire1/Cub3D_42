@@ -6,7 +6,7 @@
 /*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:14:21 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/24 16:45:52 by akaraban         ###   ########.fr       */
+/*   Updated: 2024/01/26 13:13:09 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,18 +60,6 @@ static void	fill_map(t_main *info, int fd)
 	}
 	info->map.map[i] = NULL;
 }
-
-// static void	print_map(t_main *info)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (i < info->map.height)
-// 	{
-// 		printf("%s\n", info->map.map[i]);
-// 		i++;
-// 	}
-// }
 
 static void	copy_map(t_main *info, char *file)
 {

@@ -6,7 +6,7 @@
 /*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:46:39 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/25 13:16:04 by akaraban         ###   ########.fr       */
+/*   Updated: 2024/01/26 13:32:13 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include "../Libft/libft.h"
 # include "../mlx/mlx.h"
 
-#define NAME "Cub3D"
+# define NAME "Cub3D"
 
 # define RADIAN_INC		0.06
 
@@ -155,7 +155,6 @@ typedef struct s_main
 	t_player	player;
 }	t_main;
 
-
 /************************* Parsing *************************/
 //check_input_validity.c
 void	print_error(char *error);
@@ -220,7 +219,7 @@ void	drawing_floor_and_ceilling(t_main *info);
 
 //get_hit_wall.c
 t_coor	ft_get_hit_wall(t_main *info, t_coor start_pos,
-	double angle, int *direction);
+			double angle, int *direction);
 
 //rendering_3d_scenes.c
 void	rendering_3d_scenes(t_main *info);

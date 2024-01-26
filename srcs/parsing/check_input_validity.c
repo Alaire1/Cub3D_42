@@ -6,7 +6,7 @@
 /*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:09:23 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/23 13:31:24 by akaraban         ###   ########.fr       */
+/*   Updated: 2024/01/26 13:25:43 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,12 @@ static int	check_argc(int argc)
 	if (argc > 2)
 	{
 		print_error("Too many arguments");
+		return (ERROR);
 	}
 	else if (argc < 2)
 	{
 		print_error("Too few arguments");
+		return (ERROR);
 	}
 	return (SUCCESS);
 }

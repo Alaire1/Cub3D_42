@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_2.c                                          :+:      :+:    :+:   */
+/*   read_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:51:31 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/01/24 16:29:01 by akaraban         ###   ########.fr       */
+/*   Updated: 2024/01/26 13:12:42 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,16 @@ int	get_map_info(t_main *main, int fd)
 		if (*line)
 		{
 			main->map.start_map_index++;
-			array = ft_split(line, ' ');
-			if (check_textures(main, array) == 0)
-				return (ft_free_array(array), free(line), 0);
-			ft_free_array(array);
+			if (!empty_line(line))
+			{
+				array = ft_split(line, ' ');
+				if (check_textures(main, array) == 0)
+					return (ft_free_array(array), free(line), 0);
+				ft_free_array(array);
+			}
 		}
+		else
+			main->map.start_map_index++;
 		free(line);
 	}
 	return (1);

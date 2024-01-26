@@ -6,7 +6,7 @@
 /*   By: akaraban <akaraban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:26:46 by akaraban          #+#    #+#             */
-/*   Updated: 2024/01/24 19:29:46 by akaraban         ###   ########.fr       */
+/*   Updated: 2024/01/26 13:13:23 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,5 @@ int	get_map_size(t_map *map, int fd)
 	if (!line)
 		return (0);
 	result = process_map_lines(map, line, fd);
-	map->start_map_index++;
 	return (result);
 }
