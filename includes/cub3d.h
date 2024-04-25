@@ -6,7 +6,7 @@
 /*   By: akaraban <akaraban.student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 12:46:39 by narigi-e          #+#    #+#             */
-/*   Updated: 2024/04/23 21:41:34 by akaraban         ###   ########.fr       */
+/*   Updated: 2024/04/25 23:06:04 by akaraban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,9 @@
 // 	KEY_RIGHT = 124,
 // 	KEY_DOWN = 125
 // };
-enum e_keycodes //keycodes for linux
-{
+
+#ifdef __linux__
+enum e_keycodes {
     KEY_ESC = 0xFF1B,
     KEY_A = 0x61,
     KEY_W = 0x77,
@@ -68,6 +69,35 @@ enum e_keycodes //keycodes for linux
     KEY_RIGHT = 0xFF53,
     KEY_DOWN = 0xFF54
 };
+
+#elif defined(__APPLE__)
+enum e_keycodes {
+    KEY_ESC = 53,
+    KEY_A = 0,
+    KEY_W = 13,
+    KEY_D = 2,
+    KEY_S = 1,
+    KEY_LEFT = 123,
+    KEY_UP = 126,
+    KEY_RIGHT = 124,
+    KEY_DOWN = 125
+};
+
+#else
+#error "Unsupported operating system"
+#endif
+// enum e_keycodes //keycodes for linux
+// {
+//     KEY_ESC = 0xFF1B,
+//     KEY_A = 0x61,
+//     KEY_W = 0x77,
+//     KEY_D = 0x64,
+//     KEY_S = 0x73,
+//     KEY_LEFT = 0xFF51,
+//     KEY_UP = 0xFF52,
+//     KEY_RIGHT = 0xFF53,
+//     KEY_DOWN = 0xFF54
+// };
 
 enum e_window
 {
