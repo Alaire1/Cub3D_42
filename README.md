@@ -47,9 +47,6 @@ C 0,170,219
 ```
 This map snippet defines a small maze-like section for your Cub3D game. Here's a breakdown of the elements:
 
-
-This map snippet defines a small maze-like section for your Cub3D game. Here's a breakdown of the elements:
-
 ### Texture Definitions:
 These lines define the textures used for the walls.
 ```
